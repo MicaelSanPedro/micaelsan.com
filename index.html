@@ -6,7 +6,7 @@
     <title>micaelsan.com</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
             background: linear-gradient(135deg, #e8eaf6, #ffffff);
@@ -127,10 +127,12 @@
             color: #fff;
             font-weight: bold;
         }
+
         /* Ocultar seções inicialmente */
         #modsSection, #apksSection {
             display: none;
         }
+
         /* Estilos responsivos para telas menores (celulares e tablets) */
         @media (max-width: 768px) {
             h1 {
@@ -163,6 +165,7 @@
                 margin-bottom: 10px;
             }
         }
+
         /* Estilos para telas maiores (computadores) */
         @media (min-width: 769px) {
             .search-container input[type="text"] {
@@ -184,7 +187,7 @@
         </nav>
     </header>
     <main id="mainSection">
-        <p>Agora a barra de pesquisa está funcionando! Digite algo para buscar nos Mods ou Apks.</p>
+        <p>Por enquanto <b>a barra de pesquisa não está funcionando</b></p>
         <div class="search-container">
             <form id="searchForm">
                 <input type="text" id="searchInput" placeholder="Pesquisar...">
@@ -217,59 +220,81 @@
     </section>
 
     <footer>
-        <p>Siga-me nas redes sociais:</p>
+        <p>Siga-me nas redes sociais.:</p>
         <a href="https://instagram.com/micael__san" target="_blank">Instagram</a>
         <a href="https://youtube.com/@MicaelSanPedro" target="_blank">YouTube</a>
     </footer>
 
     <script>
-        // Função para mostrar a seção selecionada
         function showSection(sectionId) {
             // Esconder todas as seções
             document.getElementById('mainSection').style.display = 'none';
             document.getElementById('modsSection').style.display = 'none';
-            document.getElementById('apksSection').style.display = 'none';
-            
+document.getElementById('apksSection').style.display = 'none';
+
             // Mostrar apenas a seção clicada
             document.getElementById(sectionId).style.display = 'block';
         }
 
-        // Função para pesquisar nos Mods e Apks
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Impedir o envio do formulário
-            
-            // Capturar o valor do input
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            const resultContainer = document.getElementById('searchResult');
-            resultContainer.innerHTML = ''; // Limpar resultados anteriores
+        // Função para filtrar conteúdo com base na pesquisa
+        function searchContent(query) {
+            // Converte o texto da pesquisa para minúsculas para facilitar a busca
+            const searchQuery = query.toLowerCase();
 
-            // Buscar nos Mods e Apks
+            // Obtém todas as seções de mods e apks
             const modsSection = document.getElementById('modsSection');
             const apksSection = document.getElementById('apksSection');
-            let found = false;
 
-            // Verificar mods
-            const modsItems = modsSection.querySelectorAll('p');
-            modsItems.forEach((item) => {
-                if (item.textContent.toLowerCase().includes(searchQuery)) {
-                    resultContainer.innerHTML += `<p><b>Mod encontrado:</b> ${item.innerHTML}</p>`;
-                    found = true;
-                }
-            });
+            // Oculta inicialmente o resultado da pesquisa
+            const resultContainer = document.getElementById('searchResult');
+            resultContainer.innerHTML = '';
+            resultContainer.style.display = 'none';
 
-            // Verificar apks
-            const apksItems = apksSection.querySelectorAll('p');
-            apksItems.forEach((item) => {
-                if (item.textContent.toLowerCase().includes(searchQuery)) {
-                    resultContainer.innerHTML += `<p><b>Apk encontrado:</b> ${item.innerHTML}</p>`;
-                    found = true;
-                }
-            });
-
-            // Caso não encontre resultados
-            if (!found) {
-                resultContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+            // Verifica se a consulta de pesquisa está vazia
+            if (!searchQuery) {
+                return;
             }
+
+            // Variável para armazenar o resultado da busca
+            let results = '';
+
+            // Procura por correspondências na seção Mods
+            if (modsSection) {
+                const modTexts = modsSection.getElementsByTagName('p');
+                for (let i = 0; i < modTexts.length; i++) {
+                    const modText = modTexts[i].innerText.toLowerCase();
+                    if (modText.includes(searchQuery)) {
+                        results += `<p>${modTexts[i].innerHTML}</p>`;
+                    }
+                }
+            }
+
+            // Procura por correspondências na seção Apks
+            if (apksSection) {
+                const apkTexts = apksSection.getElementsByTagName('p');
+                for (let i = 0; i < apkTexts.length; i++) {
+                    const apkText = apkTexts[i].innerText.toLowerCase();
+                    if (apkText.includes(searchQuery)) {
+                        results += `<p>${apkTexts[i].innerHTML}</p>`;
+                    }
+                }
+            }
+
+            // Exibe os resultados, se houver
+            if (results) {
+                resultContainer.innerHTML = results;
+                resultContainer.style.display = 'block';
+            } else {
+                resultContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                resultContainer.style.display = 'block';
+            }
+        }
+
+        // Função para tratar o envio do formulário de pesquisa
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Previne o comportamento padrão do formulário
+            const query = document.getElementById('searchInput').value;
+            searchContent(query); // Chama a função de busca
         });
     </script>
 </body>
