@@ -1,159 +1,162 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>micaelsan.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #e8eaf6, #ffffff);
+            background: linear-gradient(135deg, #e1bee7, #ffffff);
             color: #333;
+            transition: background 0.5s ease;
         }
         header {
-            background: #673ab7;
+            background: #8e24aa;
             color: #fff;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         nav {
             display: flex;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         nav button {
-            background: #5e35b1;
+            background: #7b1fa2;
             color: #fff;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            margin: 0 12px;
+            border-radius: 30px;
             border: none;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: transform 0.3s, background 0.3s;
             cursor: pointer;
         }
         nav button:hover {
-            background: #512da8;
+            background: #6a1b9a;
+            transform: translateY(-3px);
         }
         h1 {
             margin: 0;
-            font-size: 45px;
-            letter-spacing: 1px;
+            font-size: 50px;
+            letter-spacing: 2px;
         }
         main {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
         .search-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .search-container input[type="text"] {
-            width: 400px;
-            padding: 15px;
-            border: 2px solid #673ab7;
-            border-radius: 25px 0 0 25px;
+            width: 450px;
+            padding: 18px;
+            border: 2px solid #8e24aa;
+            border-radius: 30px 0 0 30px;
             outline: none;
             transition: border 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
         }
         .search-container input[type="text"]:focus {
-            border-color: #5e35b1;
-            box-shadow: 0 0 10px rgba(94, 53, 177, 0.5);
+            border-color: #7b1fa2;
+            box-shadow: 0 0 12px rgba(123, 31, 162, 0.6);
         }
         .search-container button {
-            padding: 15px 25px;
-            background: #5e35b1;
+            padding: 18px 30px;
+            background: #7b1fa2;
             border: none;
             color: #fff;
-            border-radius: 0 25px 25px 0;
+            border-radius: 0 30px 30px 0;
             cursor: pointer;
             transition: background 0.3s;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
         }
         .search-container button:hover {
-            background: #512da8;
+            background: #6a1b9a;
         }
         .result {
-            margin-top: 20px;
-            font-weight: bold;
+            margin-top: 25px;
+            font-weight: 600;
             font-size: 18px;
             color: #333;
         }
         a {
-            color: #5e35b1;
+            color: #7b1fa2;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
         a:hover {
-            color: #512da8;
+            color: #6a1b9a;
             text-decoration: underline;
+            transform: scale(1.05);
         }
         section {
             margin-top: 50px;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
             background: #fff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
         }
         section h2 {
-            font-size: 30px;
+            font-size: 28px;
             margin-bottom: 20px;
-            color: #5e35b1;
+            color: #7b1fa2;
         }
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: #673ab7;
+            margin-top: 40px;
+            padding: 25px;
+            background: #8e24aa;
             color: #fff;
             border-radius: 15px;
         }
         footer a {
-            margin: 0 10px;
+            margin: 0 12px;
             color: #fff;
             font-weight: bold;
         }
 
-        /* Ocultar seções inicialmente */
         #modsSection, #apksSection {
             display: none;
         }
 
-        /* Estilos responsivos para telas menores (celulares e tablets) */
         @media (max-width: 768px) {
             h1 {
-                font-size: 32px;
+                font-size: 34px;
             }
             .search-container input[type="text"] {
                 width: 100%;
-                padding: 10px;
-                border-radius: 25px;
+                padding: 12px;
+                border-radius: 30px;
                 font-size: 14px;
             }
             .search-container button {
                 width: 100%;
                 margin-top: 10px;
-                border-radius: 25px;
-                padding: 10px;
+                border-radius: 30px;
+                padding: 12px;
                 font-size: 14px;
             }
             main {
-                padding: 15px;
-                margin-top: 20px;
+                padding: 20px;
+                margin-top: 30px;
             }
             section h2 {
                 font-size: 24px;
@@ -166,13 +169,12 @@
             }
         }
 
-        /* Estilos para telas maiores (computadores) */
         @media (min-width: 769px) {
             .search-container input[type="text"] {
-                width: 400px;
+                width: 450px;
             }
             .search-container button {
-                padding: 15px 25px;
+                padding: 18px 30px;
             }
         }
     </style>
@@ -187,7 +189,7 @@
         </nav>
     </header>
     <main id="mainSection">
-        <p>Por enquanto <b>a barra de pesquisa não está funcionando</b></p>
+        <p><b>A barra de pesquisa não está funcionando no momento.</b></p>
         <div class="search-container">
             <form id="searchForm">
                 <input type="text" id="searchInput" placeholder="Pesquisar...">
@@ -197,51 +199,29 @@
         <div id="searchResult" class="result"></div>
     </main>
 
-    <!-- Seção para Mods -->
     <section id="modsSection">
         <h2><b>Mods</b></h2>
         <p>Subway Surfers Tudo Infinito</p>
         <p><a href="https://www.mediafire.com/file/9t5su0bgqh8ids7/subway-surfers-mod_3.32.4_mic_san.apk/file" download>Download</a></p>
-<p>Brawl Stars Dinheiro Infinito</p>
+        <p>Brawl Stars Dinheiro Infinito</p>
         <p><a href="https://www.mediafire.com/file/r7rc1beycv56luz/brawl-stars-mod_57.325-mic_san.apk/file" download>Download</a></p>
-<p>Rush Rally Dinheiro Infinito</p>
+        <p>Rush Rally Dinheiro Infinito</p>
         <p><a href="https://www.mediafire.com/file/o7vx5yhwbenslgm/rush-rally-full-version-by-Micael-San/file" download>Download</a></p>
-    
+    </section>
 
-
-
-
-
-
-
-
-
-
-</section>
-
-    <!-- Seção para Apks -->
     <section id="apksSection">
         <h2><b>Apk's</b></h2>
         <p>Lucky Patcher, o melhor aplicativo para hackear outros aplicativos.</p>
         <p><a href="https://www.mediafire.com/file/f56wvelj0vj2k1z/Lucky_Patcher_Installer_10.2.6_mic__san.apk/file" download>Download Installer</a></p>
-<p>Z Archiver Donate, Z Archiver Pro.</p>
+        <p>Z Archiver Donate, Z Archiver Pro.</p>
         <p><a href="https://www.mediafire.com/file/k1xbh4y39a96m18/ZArchiver-Pro-v1.0.9-%2528Paid%2529.apk/file" download>Download</a></p>
-</p>O melhor aplicativo de filmes e séries <b>de graça!</b></p>
+        <p>
+O melhor aplicativo de filmes e séries <b>de graça!</b></p>
         <p><a href="https://www.mediafire.com/file/3z2lohfoqo0odd1/cinetv.apk/file" download>Download</a></p>
-
-
-
-
-
-
-
-
-
-
-</section>
+    </section>
 
     <footer>
-        <p>Siga-me nas redes sociais.:</p>
+        <p>Siga-me nas redes sociais:</p>
         <a href="https://instagram.com/micael__san" target="_blank">Instagram</a>
         <a href="https://youtube.com/@MicaelSanPedro" target="_blank">YouTube</a>
     </footer>
