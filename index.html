@@ -226,76 +226,78 @@
     </footer>
 
     <script>
-        function showSection(sectionId) {
-            // Esconder todas as seções
-            document.getElementById('mainSection').style.display = 'none';
-            document.getElementById('modsSection').style.display = 'none';
-document.getElementById('apksSection').style.display = 'none';
+    function showSection(sectionId) {
+        // Esconder todas as seções
+        document.getElementById('mainSection').style.display = 'none';
+        document.getElementById('modsSection').style.display = 'none';
+        document.getElementById('apksSection').style.display = 'none';
 
-            // Mostrar apenas a seção clicada
-            document.getElementById(sectionId).style.display = 'block';
+        // Mostrar apenas a seção clicada
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Função para filtrar conteúdo com base na pesquisa
+    function searchContent(query) {
+        // Converte o texto da pesquisa para minúsculas para facilitar a busca
+        const searchQuery = query.toLowerCase();
+
+        // Obtém todas as seções de mods e apks
+        const modsSection = document.getElementById('modsSection');
+        const apksSection = document.getElementById('apksSection');
+
+        // Oculta inicialmente o resultado da pesquisa
+        const resultContainer = document.getElementById('searchResult');
+        resultContainer.innerHTML = '';
+        resultContainer.style.display = 'none';
+
+        // Verifica se a consulta de pesquisa está vazia
+        if (!searchQuery) {
+            return;
         }
 
-        // Função para filtrar conteúdo com base na pesquisa
-        function searchContent(query) {
-            // Converte o texto da pesquisa para minúsculas para facilitar a busca
-            const searchQuery = query.toLowerCase();
+        // Variável para armazenar o resultado da busca
+        let results = '';
 
-            // Obtém todas as seções de mods e apks
-            const modsSection = document.getElementById('modsSection');
-            const apksSection = document.getElementById('apksSection');
-
-            // Oculta inicialmente o resultado da pesquisa
-            const resultContainer = document.getElementById('searchResult');
-            resultContainer.innerHTML = '';
-            resultContainer.style.display = 'none';
-
-            // Verifica se a consulta de pesquisa está vazia
-            if (!searchQuery) {
-                return;
-            }
-
-            // Variável para armazenar o resultado da busca
-            let results = '';
-
-            // Procura por correspondências na seção Mods
-            if (modsSection) {
-                const modTexts = modsSection.getElementsByTagName('p');
-                for (let i = 0; i < modTexts.length; i++) {
-                    const modText = modTexts[i].innerText.toLowerCase();
-                    if (modText.includes(searchQuery)) {
-                        results += `<p>${modTexts[i].innerHTML}</p>`;
-                    }
+        // Procura por correspondências na seção Mods
+        if (modsSection) {
+            const modItems = modsSection.getElementsByTagName('p');
+            for (let i = 0; i < modItems.length; i += 2) { // p e a estão juntos
+                const modText = modItems[i].innerText.toLowerCase();
+                if (modText.includes(searchQuery)) {
+                    const link = modItems[i + 1].innerHTML; // pega o link abaixo do texto
+                    results += `<p>${modItems[i].innerHTML}</p>${link}`;
                 }
-            }
-
-            // Procura por correspondências na seção Apks
-            if (apksSection) {
-                const apkTexts = apksSection.getElementsByTagName('p');
-                for (let i = 0; i < apkTexts.length; i++) {
-                    const apkText = apkTexts[i].innerText.toLowerCase();
-                    if (apkText.includes(searchQuery)) {
-                        results += `<p>${apkTexts[i].innerHTML}</p>`;
-                    }
-                }
-            }
-
-            // Exibe os resultados, se houver
-            if (results) {
-                resultContainer.innerHTML = results;
-                resultContainer.style.display = 'block';
-            } else {
-                resultContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-                resultContainer.style.display = 'block';
             }
         }
 
-        // Função para tratar o envio do formulário de pesquisa
-        document.getElementById('searchForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Previne o comportamento padrão do formulário
-            const query = document.getElementById('searchInput').value;
-            searchContent(query); // Chama a função de busca
-        });
-    </script>
+        // Procura por correspondências na seção Apks
+        if (apksSection) {
+            const apkItems = apksSection.getElementsByTagName('p');
+            for (let i = 0; i < apkItems.length; i += 2) { // p e a estão juntos
+                const apkText = apkItems[i].innerText.toLowerCase();
+                if (apkText.includes(searchQuery)) {
+                    const link = apkItems[i + 1].innerHTML; // pega o link abaixo do texto
+                    results += `<p>${apkItems[i].innerHTML}</p>${link}`;
+                }
+            }
+        }
+
+        // Exibe os resultados, se houver
+        if (results) {
+            resultContainer.innerHTML = results;
+            resultContainer.style.display = 'block';
+        } else {
+            resultContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+            resultContainer.style.display = 'block';
+        }
+    }
+
+    // Função para tratar o envio do formulário de pesquisa
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Previne o comportamento padrão do formulário
+        const query = document.getElementById('searchInput').value;
+        searchContent(query); // Chama a função de busca
+    });
+</script>
 </body>
 </html>
