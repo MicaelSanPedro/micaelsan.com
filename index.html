@@ -4,168 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>micaelsan.com</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 0;
-            background: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?crop=entropy&fit=crop&w=1920&h=1080&q=80') no-repeat center center fixed;
-            background-size: cover;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8eaf6, #ffffff);
             color: #333;
-            transition: background 0.5s ease;
         }
         header {
-            background: rgba(142, 36, 170, 0.9);
+            background: #673ab7;
             color: #fff;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         nav {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         nav button {
-            background: #7b1fa2;
+            background: #5e35b1;
             color: #fff;
-            padding: 12px 25px;
-            margin: 0 12px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
             border: none;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            transition: background 0.3s;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         nav button:hover {
-            background: #6a1b9a;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: #512da8;
         }
         h1 {
             margin: 0;
-            font-size: 55px;
-            letter-spacing: 2px;
+            font-size: 45px;
+            letter-spacing: 1px;
         }
         main {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .search-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .search-container input[type="text"] {
-            width: 450px;
-            padding: 18px;
-            border: 2px solid #8e24aa;
-            border-radius: 30px 0 0 30px;
+            width: 400px;
+            padding: 15px;
+            border: 2px solid #673ab7;
+            border-radius: 25px 0 0 25px;
             outline: none;
             transition: border 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             font-size: 16px;
-            font-weight: 600;
+            font-weight: bold;
         }
         .search-container input[type="text"]:focus {
-            border-color: #7b1fa2;
-            box-shadow: 0 0 12px rgba(123, 31, 162, 0.6);
+            border-color: #5e35b1;
+            box-shadow: 0 0 10px rgba(94, 53, 177, 0.5);
         }
         .search-container button {
-            padding: 18px 30px;
-            background: #7b1fa2;
+            padding: 15px 25px;
+            background: #5e35b1;
             border: none;
             color: #fff;
-            border-radius: 0 30px 30px 0;
+            border-radius: 0 25px 25px 0;
             cursor: pointer;
-            transition: background 0.3s, box-shadow 0.3s;
+            transition: background 0.3s;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: bold;
         }
         .search-container button:hover {
-            background: #6a1b9a;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: #512da8;
         }
         .result {
-            margin-top: 25px;
-            font-weight: 600;
+            margin-top: 20px;
+            font-weight: bold;
             font-size: 18px;
             color: #333;
         }
         a {
-            color: #7b1fa2;
+            color: #5e35b1;
             text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s;
         }
         a:hover {
-            color: #6a1b9a;
+            color: #512da8;
             text-decoration: underline;
-            transform: scale(1.05);
         }
         section {
             margin-top: 50px;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             background: #fff;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         section h2 {
-            font-size: 28px;
+            font-size: 30px;
             margin-bottom: 20px;
-            color: #7b1fa2;
+            color: #5e35b1;
         }
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 25px;
-            background: rgba(142, 36, 170, 0.9);
+            margin-top: 30px;
+            padding: 20px;
+            background: #673ab7;
             color: #fff;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         footer a {
-            margin: 0 12px;
+            margin: 0 10px;
             color: #fff;
             font-weight: bold;
-            transition: transform 0.3s;
         }
-        footer a:hover {
-            transform: translateY(-3px);
-        }
-
+        /* Ocultar seções inicialmente */
         #modsSection, #apksSection {
             display: none;
         }
-
+        /* Estilos responsivos para telas menores (celulares e tablets) */
         @media (max-width: 768px) {
             h1 {
-                font-size: 34px;
+                font-size: 32px;
             }
             .search-container input[type="text"] {
                 width: 100%;
-                padding: 12px;
-                border-radius: 30px;
+                padding: 10px;
+                border-radius: 25px;
                 font-size: 14px;
             }
             .search-container button {
                 width: 100%;
                 margin-top: 10px;
-                border-radius: 30px;
-                padding: 12px;
+                border-radius: 25px;
+                padding: 10px;
                 font-size: 14px;
             }
             main {
-                padding: 20px;
-                margin-top: 30px;
+                padding: 15px;
+                margin-top: 20px;
             }
             section h2 {
                 font-size: 24px;
@@ -177,19 +163,14 @@
                 margin-bottom: 10px;
             }
         }
-
+        /* Estilos para telas maiores (computadores) */
         @media (min-width: 769px) {
             .search-container input[type="text"] {
-                width: 450px;
+                width: 400px;
             }
             .search-container button {
-                padding: 18px 30px;
+                padding: 15px 25px;
             }
-        }
-
-        /* Scroll suave */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -203,7 +184,7 @@
         </nav>
     </header>
     <main id="mainSection">
-        <p><b>A barra de pesquisa não está funcionando no momento.</b></p>
+        <p>Agora a barra de pesquisa está funcionando! Digite algo para buscar nos Mods ou Apks.</p>
         <div class="search-container">
             <form id="searchForm">
                 <input type="text" id="searchInput" placeholder="Pesquisar...">
@@ -213,6 +194,7 @@
         <div id="searchResult" class="result"></div>
     </main>
 
+    <!-- Seção para Mods -->
     <section id="modsSection">
         <h2><b>Mods</b></h2>
         <p>Subway Surfers Tudo Infinito</p>
@@ -241,6 +223,7 @@
     </footer>
 
     <script>
+        // Função para mostrar a seção selecionada
         function showSection(sectionId) {
             // Esconder todas as seções
             document.getElementById('mainSection').style.display = 'none';
@@ -250,6 +233,44 @@
             // Mostrar apenas a seção clicada
             document.getElementById(sectionId).style.display = 'block';
         }
+
+        // Função para pesquisar nos Mods e Apks
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impedir o envio do formulário
+            
+            // Capturar o valor do input
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const resultContainer = document.getElementById('searchResult');
+            resultContainer.innerHTML = ''; // Limpar resultados anteriores
+
+            // Buscar nos Mods e Apks
+            const modsSection = document.getElementById('modsSection');
+            const apksSection = document.getElementById('apksSection');
+            let found = false;
+
+            // Verificar mods
+            const modsItems = modsSection.querySelectorAll('p');
+            modsItems.forEach((item) => {
+                if (item.textContent.toLowerCase().includes(searchQuery)) {
+                    resultContainer.innerHTML += `<p><b>Mod encontrado:</b> ${item.innerHTML}</p>`;
+                    found = true;
+                }
+            });
+
+            // Verificar apks
+            const apksItems = apksSection.querySelectorAll('p');
+            apksItems.forEach((item) => {
+                if (item.textContent.toLowerCase().includes(searchQuery)) {
+                    resultContainer.innerHTML += `<p><b>Apk encontrado:</b> ${item.innerHTML}</p>`;
+                    found = true;
+                }
+            });
+
+            // Caso não encontre resultados
+            if (!found) {
+                resultContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+            }
+        });
     </script>
 </body>
 </html>
