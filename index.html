@@ -234,30 +234,38 @@
         <a href="https://www.youtube.com/@MicaelSanPedro" target="_blank">YouTube</a>
     </footer>
 
-    <script>
-        // Função para mostrar as seções de acordo com o botão clicado
+        <script>
+    function showSection(sectionId) {
+        // Esconder todas as seções
+        document.getElementById('mainSection').style.display = 'none';
+<script>
         function showSection(sectionId) {
-            // Oculta todas as seções
+            // Esconder todas as seções
             document.getElementById('mainSection').style.display = 'none';
             document.getElementById('modsSection').style.display = 'none';
             document.getElementById('apksSection').style.display = 'none';
 
-            // Mostra a seção selecionada
+            // Mostrar apenas a seção selecionada
             document.getElementById(sectionId).style.display = 'block';
         }
 
-        // Função para exibir resultado da pesquisa
-        document.getElementById('searchForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var query = document.getElementById('searchInput').value;
-            if (query.trim() !== '') {
-                document.getElementById('searchResult').innerText = 'Resultado da pesquisa para: ' + query;
+        // Evento para o formulário de busca
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevenir comportamento padrão do formulário
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultElement = document.getElementById('searchResult');
+            
+            // Simular um sistema de busca simples para as seções Mods e Apks
+            if (query.includes('mod')) {
+                resultElement.innerHTML = 'Você pode encontrar Mods <a href="#" onclick="showSection(\'modsSection\')">aqui</a>.';
+            } else if (query.includes('apk')) {
+                resultElement.innerHTML = 'Você pode encontrar Apk\'s <a href="#" onclick="showSection(\'apksSection\')">aqui</a>.';
             } else {
-                document.getElementById('searchResult').innerText = 'Digite algo para pesquisar.';
+                resultElement.innerHTML = 'Nenhum resultado encontrado para: ' + query;
             }
         });
 
-        // Inicializa a visualização principal
+        // Mostrar a seção inicial (menu)
         showSection('mainSection');
     </script>
 </body>
