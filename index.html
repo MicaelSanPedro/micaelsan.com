@@ -9,16 +9,16 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #e8eaf6, #ffffff);
+            background: linear-gradient(135deg, #f8f9fa, #e2e6ea);
             color: #333;
         }
         header {
-            background: #673ab7;
+            background: #3f51b5;
             color: #fff;
             padding: 20px;
             text-align: center;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         nav {
             display: flex;
@@ -26,106 +26,122 @@
             margin-top: 15px;
         }
         nav button {
-            background: #5e35b1;
+            background: #3949ab;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 25px;
             margin: 0 10px;
-            border-radius: 5px;
+            border-radius: 25px;
             border: none;
-            text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
             cursor: pointer;
         }
         nav button:hover {
-            background: #512da8;
+            background: #303f9f;
+            transform: scale(1.05);
         }
         h1 {
             margin: 0;
-            font-size: 45px;
+            font-size: 48px;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
         main {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
         }
         .search-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .search-container input[type="text"] {
-            width: 400px;
+            width: 100%;
+            max-width: 500px;
             padding: 15px;
-            border: 2px solid #673ab7;
+            border: 2px solid #3f51b5;
             border-radius: 25px 0 0 25px;
             outline: none;
-            transition: border 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            font-size: 18px;
             font-weight: bold;
         }
         .search-container input[type="text"]:focus {
-            border-color: #5e35b1;
-            box-shadow: 0 0 10px rgba(94, 53, 177, 0.5);
+            border-color: #3949ab;
+            box-shadow: 0 0 15px rgba(57, 73, 171, 0.4);
         }
         .search-container button {
-            padding: 15px 25px;
-            background: #5e35b1;
+            padding: 15px 30px;
+            background: #3949ab;
             border: none;
             color: #fff;
             border-radius: 0 25px 25px 0;
             cursor: pointer;
-            transition: background 0.3s;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
         .search-container button:hover {
-            background: #512da8;
+            background: #303f9f;
+            box-shadow: 0 6px 15px
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
         .result {
             margin-top: 20px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         a {
-            color: #5e35b1;
+            color: #3949ab;
             text-decoration: none;
+            font-weight: bold;
             transition: color 0.3s;
         }
         a:hover {
-            color: #512da8;
+            color: #303f9f;
             text-decoration: underline;
         }
         section {
             margin-top: 50px;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
             background: #fff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         section h2 {
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 20px;
-            color: #5e35b1;
+            color: #3f51b5;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.05);
         }
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: #673ab7;
+            margin-top: 40px;
+            padding: 25px;
+            background: #3f51b5;
             color: #fff;
             border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         footer a {
-            margin: 0 10px;
+            margin: 0 15px;
             color: #fff;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #c5cae9;
         }
 
         /* Ocultar seções inicialmente */
@@ -136,43 +152,44 @@
         /* Estilos responsivos para telas menores (celulares e tablets) */
         @media (max-width: 768px) {
             h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             .search-container input[type="text"] {
                 width: 100%;
-                padding: 10px;
+                padding: 12px;
                 border-radius: 25px;
-                font-size: 14px;
+                font-size: 16px;
             }
             .search-container button {
                 width: 100%;
                 margin-top: 10px;
                 border-radius: 25px;
-                padding: 10px;
-                font-size: 14px;
+                padding: 12px;
+                font-size: 16px;
             }
             main {
-                padding: 15px;
-                margin-top: 20px;
+                padding: 20px;
+                margin-top: 30px;
             }
             section h2 {
-                font-size: 24px;
+                font-size: 26px;
             }
             nav {
                 flex-direction: column;
             }
             nav button {
                 margin-bottom: 10px;
+                padding: 10px 20px;
             }
         }
 
         /* Estilos para telas maiores (computadores) */
         @media (min-width: 769px) {
             .search-container input[type="text"] {
-                width: 400px;
+                width: 500px;
             }
             .search-container button {
-                padding: 15px 25px;
+                padding: 15px 30px;
             }
         }
     </style>
@@ -205,19 +222,9 @@
         <p><a href="https://www.mediafire.com/file/r7rc1beycv56luz/brawl-stars-mod_57.325-mic_san.apk/file" download>Download</a></p>
         <p>Rush Rally 3 Dinheiro Infinito</p>
         <p><a href="https://www.mediafire.com/file/floqj59rut87zwt/rush-rally-3-mod_1.160-an1.com.apk/file" download>Download</a></p>
-<p>Stumble Guys Mod Skins, Pegadas e etc.</p>
+        <p>Stumble Guys Mod Skins, Pegadas e etc.</p>
         <p><a href="https://www.mediafire.com/file/34niuwkd65xtc79/Stumble-Guys-v0.78.5-MOD-MENU.apk/file" download>Mais recente V0.78.5</a></p>
-<p><a href="https://www.mediafire.com/file/sjd1slqh9yp34jd/Stumble-Guys-v0.77-MOD-.apk/file" download>V0.77</a></p>
-
-
-
-
-
-
-
-
-
-
+        <p><a href="https://www.mediafire.com/file/sjd1slqh9yp34jd/Stumble-Guys-v0.77-MOD-.apk/file" download>V0.77</a></p>
     </section>
 
     <!-- Seção para Apks -->
@@ -229,11 +236,8 @@
         <p><a href="https://www.mediafire.com/file/k1xbh4y39a96m18/ZArchiver-Pro-v1.0.9-%2528Paid%2529.apk/file" download>Download</a></p>
         <p>O melhor aplicativo de filmes e séries <b>de graça!</b></p>
         <p><a href="https://www.mediafire.com/file/3z2lohfoqo0odd1/cinetv.apk/file" download>Download</a></p>
-<p>PicsArt Pro</b></p>
+        <p>PicsArt Pro</b></p>
         <p><a href="https://www.mediafire.com/file/t5dqfoh813s62gr/Picsart-v24.4-Premium.apk/file" download>Download</a></p>
-
-
-
     </section>
 
     <footer>
@@ -290,7 +294,7 @@
         // Procura por correspondências na seção Apks
         if (apksSection) {
             const apkItems = apksSection.getElementsByTagName('p');
-            for (let i = 0; i < apkItems.length; i += 2) { // p e a estão juntos
+            for (let i = 0; i < apkItems.length; i+= 2) { // p e a estão juntos
                 const apkText = apkItems[i].innerText.toLowerCase();
                 if (apkText.includes(searchQuery)) {
                     const link = apkItems[i + 1].innerHTML; // pega o link abaixo do texto
@@ -299,7 +303,7 @@
             }
         }
 
-        // Exibe os resultados, se houver
+        // Se houver resultados, mostrá-los no container de resultados
         if (results) {
             resultContainer.innerHTML = results;
             resultContainer.style.display = 'block';
@@ -309,12 +313,12 @@
         }
     }
 
-    // Função para tratar o envio do formulário de pesquisa
-    document.getElementById('searchForm').addEventListener('submit', function (e) {
-        e.preventDefault(); // Previne o comportamento padrão do formulário
-        const query = document.getElementById('searchInput').value;
-        searchContent(query); // Chama a função de busca
+    // Captura o evento de envio do formulário de pesquisa
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+        const query = document.getElementById('searchInput').value; // Obtém o valor da pesquisa
+        searchContent(query); // Realiza a pesquisa
     });
-</script>
+    </script>
 </body>
 </html>
