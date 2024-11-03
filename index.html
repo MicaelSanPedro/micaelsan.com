@@ -6,12 +6,9 @@
     <title>Livraria Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Estilo básico para todos os elementos */
         * {
             box-sizing: border-box;
         }
-
-        /* Estilo do corpo da página */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -19,8 +16,6 @@
             background-color: #f3f4f6;
             color: #333;
         }
-
-        /* Estilo do cabeçalho e rodapé */
         header, footer {
             background: linear-gradient(135deg, #2C3E50, #3498db);
             color: white;
@@ -28,29 +23,21 @@
             padding: 2rem;
             border-bottom: 5px solid #1ABC9C;
         }
-
-        /* Estilo do logo no cabeçalho */
         header img {
             width: 100px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
         }
-
-        /* Efeito de hover no logo */
         header img:hover {
             transform: scale(1.1);
         }
-
-        /* Estilo do menu de navegação */
         nav {
             text-align: center;
             padding: 1rem;
             background: linear-gradient(135deg, #3b4048, #34495E);
             color: white;
         }
-
-        /* Estilo dos links do menu */
         nav a {
             display: inline-block;
             margin: 0 0.5rem;
@@ -62,20 +49,14 @@
             text-decoration: none;
             transition: background-color 0.3s, transform 0.3s;
         }
-
-        /* Efeito de hover nos links do menu */
         nav a:hover {
             background-color: #16a085;
             transform: translateY(-2px);
         }
-
-        /* Estilo da barra de pesquisa */
         .search-bar {
             text-align: center;
             padding: 1rem;
         }
-
-        /* Estilo do input de pesquisa */
         .search-bar input[type="text"] {
             width: 60%;
             border: 2px solid #3b4048;
@@ -83,10 +64,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        /* Estilo do botão de pesquisa e compra */
-        .search-bar input[type="submit"],
-        .buy-btn {
+        .search-bar input[type="submit"], .buy-btn {
             border: none;
             background-color: #1ABC9C;
             color: white;
@@ -95,14 +73,9 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
-        /* Efeito de hover no botão de pesquisa e compra */
-        .search-bar input[type="submit"]:hover,
-        .buy-btn:hover {
+        .search-bar input[type="submit"]:hover, .buy-btn:hover {
             background-color: #16a085;
         }
-
-        /* Estilo das seções de conteúdo */
         .section {
             background: #fff;
             padding: 2rem;
@@ -110,27 +83,19 @@
             margin: 2rem auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        /* Estilo do conteúdo oculto */
         .content {
             display: none;
             padding: 2rem;
             transition: opacity 0.3s;
         }
-
-        /* Estilo da seção ativa */
         .active {
             display: block;
             opacity: 1;
         }
-
-        /* Estilo para o preço dos livros */
         .price {
             font-weight: bold;
             color: #E74C3C;
         }
-
-        /* Responsividade para dispositivos menores */
         @media(max-width: 600px) {
             .section {
                 width: 90%;
@@ -145,13 +110,10 @@
         }
     </style>
     <script>
-        // Função para alternar as seções de conteúdo
         function toggleSection(id) {
             document.querySelectorAll('.content').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
-
-        // Função para pesquisar livros
         function searchBooks() {
             const q = document.getElementById('search-input').value.toLowerCase();
             document.querySelectorAll('.content').forEach(s => {
