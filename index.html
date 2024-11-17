@@ -92,6 +92,9 @@
             display: block;
             opacity: 1;
         }
+        .book {
+            margin-bottom: 1.5rem;
+        }
         .price {
             font-weight: bold;
             color: #E74C3C;
@@ -114,18 +117,23 @@
             document.querySelectorAll('.content').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
+
         function searchBooks() {
-            const q = document.getElementById('search-input').value.toLowerCase();
-            document.querySelectorAll('.content').forEach(s => {
-                let r = false;
-                s.querySelectorAll('.book').forEach(b => {
-                    const m = b.textContent.toLowerCase().includes(q);
-                    b.style.display = m ? 'block' : 'none';
-                    r = r || m;
+            const query = document.getElementById('search-input').value.toLowerCase();
+            let found = false;
+
+            document.querySelectorAll('.content').forEach(section => {
+                let sectionHasResults = false;
+                section.querySelectorAll('.book').forEach(book => {
+                    const matches = book.textContent.toLowerCase().includes(query);
+                    book.style.display = matches ? 'block' : 'none';
+                    if (matches) sectionHasResults = true;
                 });
-                s.style.display = r ? 'block' : 'none';
+                section.style.display = sectionHasResults ? 'block' : 'none';
+                if (sectionHasResults) found = true;
             });
-            document.getElementById('start').style.display = q ? 'none' : 'block';
+
+            document.getElementById('start').style.display = query && !found ? 'none' : 'block';
         }
     </script>
 </head>
