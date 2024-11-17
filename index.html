@@ -114,8 +114,13 @@
     </style>
     <script>
         function toggleSection(id) {
-            document.querySelectorAll('.content').forEach(s => s.classList.remove('active'));
+            // Limpar pesquisa e ocultar todos os livros
+            document.querySelectorAll('.content').forEach(s => {
+                s.classList.remove('active');
+            });
             document.getElementById(id).classList.add('active');
+            document.getElementById('search-input').value = ''; // Limpar campo de pesquisa
+            searchBooks(); // Atualizar a visualização
         }
 
         function searchBooks() {
@@ -153,7 +158,7 @@
         <a href="javascript:void(0)" onclick="toggleSection('kids')">Histórias para Crianças</a>
     </nav>
     <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Pesquisar livros ou seções..." onkeyup="searchBooks()">
+        <input type="text" id="search-input" placeholder="Pesquisar livros ou seções..." onkeyup="searchBooks()" spellcheck="true">
         <input type="submit" value="Pesquisar" onclick="searchBooks()">
     </div>
     <div class="content active" id="start">
