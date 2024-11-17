@@ -6,148 +6,36 @@
     <title>Livraria Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            color: #333;
-        }
-        header, footer {
-            background: linear-gradient(135deg, #2C3E50, #3498db);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            border-bottom: 5px solid #1ABC9C;
-        }
-        header img {
-            width: 100px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-        header img:hover {
-            transform: scale(1.1);
-        }
-        nav {
-            text-align: center;
-            padding: 1rem;
-            background: linear-gradient(135deg, #3b4048, #34495E);
-            color: white;
-        }
-        nav a {
-            display: inline-block;
-            margin: 0 0.5rem;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #1ABC9C;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav a:hover {
-            background-color: #16a085;
-            transform: translateY(-2px);
-        }
-        .search-bar {
-            text-align: center;
-            padding: 1rem;
-        }
-        .search-bar input[type="text"] {
-            width: 60%;
-            border: 2px solid #3b4048;
-            padding: 0.5rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .search-bar input[type="submit"], .buy-btn {
-            border: none;
-            background-color: #1ABC9C;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .search-bar input[type="submit"]:hover, .buy-btn:hover {
-            background-color: #16a085;
-        }
-        .section {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .content {
-            display: none;
-            padding: 2rem;
-            transition: opacity 0.3s;
-        }
-        .active {
-            display: block;
-            opacity: 1;
-        }
-        .book {
-            margin-bottom: 1.5rem;
-        }
-        .price {
-            font-weight: bold;
-            color: #E74C3C;
-        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f3f4f6; color: #333; }
+        header, footer { background: linear-gradient(135deg, #2C3E50, #3498db); color: white; text-align: center; padding: 2rem; border-bottom: 5px solid #1ABC9C; }
+        header img { width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s; }
+        header img:hover { transform: scale(1.1); }
+        h1 { font-size: 2rem; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+        nav { text-align: center; padding: 1rem; background: #34495E; color: white; }
+        nav a { display: inline-block; margin: 0 1rem; padding: 0.8rem 1.5rem; font-size: 1.1rem; font-weight: bold; border-radius: 5px; cursor: pointer; background-color: #1ABC9C; text-decoration: none; transition: background-color 0.3s, transform 0.3s; }
+        nav a:hover { background-color: #16a085; transform: translateY(-2px); }
+        nav a:focus { outline: none; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+        .search-bar { text-align: center; padding: 1rem; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); margin: 1rem 0; border-radius: 8px; }
+        .search-bar input[type="text"] { width: 60%; border: 2px solid #3b4048; padding: 0.8rem; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 1rem; transition: box-shadow 0.3s; }
+        .search-bar input[type="text"]:focus { outline: none; box-shadow: 0 0 8px rgba(26, 188, 156, 0.7); }
+        .search-bar input[type="submit"], .buy-btn { border: none; background-color: #1ABC9C; color: white; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        .search-bar input[type="submit"]:hover, .buy-btn:hover { background-color: #16a085; }
+        .section { background: #fff; padding: 2rem; border-radius: 10px; margin: 2rem auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+        .content { display: none; padding: 2rem; transition: opacity 0.3s; }
+        .active { display: block; opacity: 1; }
+        .book { margin-bottom: 1.5rem; }
+        .price { font-weight: bold; color: #E74C3C; }
         @media(max-width: 600px) {
-            .section {
-                width: 90%;
-            }
-            .search-bar input[type="text"] {
-                width: 80%;
-            }
-            nav a {
-                display: block;
-                margin: 0.5rem 0;
-            }
+            .section { width: 90%; }
+            .search-bar input[type="text"] { width: 80%; }
+            nav a { display: block; margin: 0.5rem 0; }
         }
     </style>
-    <script>
-        function toggleSection(id) {
-            document.querySelectorAll('.content').forEach(s => {
-                s.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-            document.getElementById('search-input').value = '';
-            searchBooks();
-        }
-
-        function searchBooks() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            let found = false;
-
-            document.querySelectorAll('.content').forEach(section => {
-                let sectionHasResults = false;
-                section.querySelectorAll('.book').forEach(book => {
-                    const title = book.querySelector('h3').textContent.toLowerCase();
-                    const description = book.querySelector('p').textContent.toLowerCase();
-                    const sectionName = section.querySelector('h2').textContent.toLowerCase();
-
-                    const matches = title.includes(query) || description.includes(query) || sectionName.includes(query);
-                    book.style.display = matches ? 'block' : 'none';
-                    if (matches) sectionHasResults = true;
-                });
-                section.style.display = sectionHasResults ? 'block' : 'none';
-                if (sectionHasResults) found = true;
-            });
-
-            document.getElementById('start').style.display = query && !found ? 'none' : 'block';
-        }
-    </script>
 </head>
 <body onload="toggleSection('start')">
     <header>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzQHCPsaJ6DGM-G77QTvXyk2O9CdB-Z9nd0A&s" alt="Logo da Livraria Online" loading="lazy">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzQHCPsaJ6DGM-G77QTvXyk2O9CdB-Z9nd0A&s" alt="Logo" loading="lazy">
         <h1>Livraria Online</h1>
     </header>
     <nav>
@@ -156,7 +44,7 @@
         <a href="javascript:void(0)" onclick="toggleSection('kids')">Histórias para Crianças</a>
     </nav>
     <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Pesquisar livros ou seções..." onkeyup="searchBooks()" spellcheck="true">
+        <input type="text" id="search-input" placeholder="Pesquisar livros..." onkeyup="searchBooks()">
         <input type="submit" value="Pesquisar" onclick="searchBooks()">
     </div>
     <div class="content active" id="start">
@@ -192,5 +80,29 @@
     <footer>
         <p>&copy; 2024 Livraria Online. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        function toggleSection(id) {
+            document.querySelectorAll('.content').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('search-input').value = '';
+            searchBooks();
+        }
+
+        function searchBooks() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            let found = false;
+            document.querySelectorAll('.content').forEach(section => {
+                let sectionHasResults = false;
+                section.querySelectorAll('.book').forEach(book => {
+                    const matches = book.textContent.toLowerCase().includes(query);
+                    book.style.display = matches ? 'block' : 'none';
+                    if (matches) sectionHasResults = true;
+                });
+                section.style.display = sectionHasResults ? 'block' : 'none';
+                if (sectionHasResults) found = true;
+            });
+        }
+    </script>
 </body>
 </html>
