@@ -114,13 +114,12 @@
     </style>
     <script>
         function toggleSection(id) {
-            // Limpar pesquisa e ocultar todos os livros
             document.querySelectorAll('.content').forEach(s => {
                 s.classList.remove('active');
             });
             document.getElementById(id).classList.add('active');
-            document.getElementById('search-input').value = ''; // Limpar campo de pesquisa
-            searchBooks(); // Atualizar a visualização
+            document.getElementById('search-input').value = '';
+            searchBooks();
         }
 
         function searchBooks() {
@@ -142,7 +141,6 @@
                 if (sectionHasResults) found = true;
             });
 
-            // Exibir ou ocultar seção "Início" se não houver resultados
             document.getElementById('start').style.display = query && !found ? 'none' : 'block';
         }
     </script>
