@@ -198,7 +198,13 @@ body::before {
         }
       });
 
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+      if (section.style.display === 'block') {
+  section.style.display = 'none';
+} else {
+  allSections.forEach(sec => sec.style.display = 'none');
+  section.style.display = 'block';
+}
+
     }
   </script>
 
