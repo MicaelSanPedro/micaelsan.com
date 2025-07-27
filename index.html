@@ -1,260 +1,195 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smokey</title>
-    <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Links</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: #fff;
-            overflow-x: hidden;
-        }
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
+    header {
+      width: 100%;
+      padding: 50px 20px 20px;
+      text-align: center;
+      background: linear-gradient(to right, #00ffd5, #007aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,255,213,0.4);
+    }
 
-        .hero .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
+    .hero {
+      margin: 20px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
 
-        .hero h1 {
-            font-size: 4rem;
-            position: relative;
-            z-index: 1;
-        }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px 0;
+      animation: fadeInUp 1.5s ease;
+    }
 
-        /* Seções */
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
+    .card {
+      background: #1e1e2f;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(0,255,213,0.1);
+      cursor: pointer;
+      position: relative;
+    }
 
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,255,213,0.5);
+    }
 
-        section h2 svg {
-            width: 40px;
-            height: 40px;
-        }
+    .card span {
+      color: #00ffd5;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
 
-        section p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
+    .content-section {
+      display: none;
+      background: #2a2a3f;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(0,255,213,0.2);
+      animation: fadeIn 0.5s ease;
+    }
 
-        /* Cards de Links, Tutoriais e Nuvem */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    .content-section h2 {
+      color: #00ffd5;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
+    .content-section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
 
-        .card:hover {
-            transform: scale(1.05);
-        }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      animation: fadeIn 2s ease;
+    }
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .card p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-        .card a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #e94584;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .card a:hover {
-            background: #ff6b9d;
-        }
-
-        /* Rodapé */
-        footer {
-            padding: 20px;
-            text-align: center;
-            background: #0f3460;
-        }
-
-        footer .social-icons {
-            margin-bottom: 10px;
-        }
-
-        footer .social-icons a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-icons a:hover {
-            color: #e94584;
-        }
-    </style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div>
-            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" height="80" width="80">
-                <path d="M3.75 3.125h7.5l1.875 3.125 -5.3125 5.9375a0.4375 0.4375 0 0 1 -0.625 0L1.875 6.25l1.875 -3.125" stroke-width="1"></path>
-                <path d="M6.25 7.5 5 6.125l0.375 -0.625" stroke-width="1"></path>
-            </svg>
-            <h1>Smokey</h1>
-            <p>Links para apps, tutoriais e cloud gaming.</p>
-        </div>
-    </section>
+  <header>
+    <h1>Infinity Links</h1>
+  </header>
 
-    <!-- Seção de Links -->
-    <section id="links">
-        <h2>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" height="40" width="40">
-                <path d="M5.625 10.625H4.375A3.125 3.125 0 0 1 4.375 4.375h1.25" stroke-width="1"></path>
-                <path d="M9.375 4.375h1.25a3.125 3.125 0 1 1 0 6.25h-1.25" stroke-width="1"></path>
-                <path d="m5 7.5 5 0" stroke-width="1"></path>
-            </svg>
-            Links para Apps
-        </h2>
-        <div class="grid">
-            <div class="card">
-                <h3>WeChat</h3>
-                <p>Aplicativo de mensagens e rede social chinês.</p>
-                <a href=https://play.google.com/store/apps/details?id=com.tencent.mm>Acessar</a>
-            </div>
-            <div class="card">
-                <h3>GeForce Now</h3>
-                <p>Plataforma de cloud gaming da NVIDIA.</p>
-                <a href=https://play.google.com/store/apps/details?id=com.nvidia.geforcenow>Acessar</a>
-            </div>
-            <div class="card">
-                <h3>vpn.lat</h3>
-                <p>Serviço de VPN para acesso global seguro.</p>
-                <a href=https://play.google.com/store/apps/details?id=com.vpn.lat>Acessar</a>
-            </div>
-        </div>
-    </section>
+  <div class="hero">
+    <p>Clica num card e vê a magia acontecer: conteúdo abre embaixo dele! 🔥</p>
+  </div>
 
-    <!-- Seção de Tutoriais -->
-    <section id="tutoriais">
-        <h2>
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff" height="40" width="40">
-                <path d="m23.99 13.543 -0.007 -0.288c-0.015 -1.122 -0.645 -6.495 -0.999 -7.457 -0.41 -1.111 -0.974 -1.945 -1.675 -2.48 -1.143 -0.873 -2.115 -1.063 -3.313 -1.087h-0.03c-0.51 0 -3.848 0.415 -6.642 0.801 -2.797 0.387 -6.303 0.915 -7.14 1.227 -1.153 0.432 -2.07 0.997 -2.796 1.728C0.05 7.332 -0.113 8.731 0.054 10.553c0.13 1.412 0.875 6.975 1.302 8.248 0.574 1.717 1.694 2.75 3.154 2.909 0.36 0.039 0.704 0.059 1.045 0.059 1.28 0 2.295 -0.278 3.47 -0.598 1.848 -0.505 4.147 -1.13 8.893 -1.13h0.14c1.162 0 4.008 -0.263 5.303 -2.687 0.693 -1.297 0.652 -2.87 0.629 -3.811zm-7.719 -1.67 -0.105 0.066c-0.274 0.185 -0.547 0.373 -0.819 0.563l-4.298 2.975c-0.27 0.21 -0.748 0.521 -1.016 0.521a0.236 0.236 0 0 1 -0.107 -0.024c-0.226 -0.12 -0.303 -0.94 -0.356 -1.34l-0.011 -0.087c-0.065 -0.478 -0.594 -5.035 -0.654 -5.535 -0.017 -0.142 -0.105 -0.663 0.055 -0.781 0.05 -0.037 0.12 -0.05 0.2 -0.05 0.195 0 0.442 0.083 0.549 0.118 0.845 0.272 5.083 1.774 6.4 2.448 0.038 0.02 0.079 0.04 0.122 0.057 0.188 0.08 0.446 0.192 0.452 0.51 0.004 0.304 -0.225 0.446 -0.412 0.56z" stroke-width="1"></path>
-            </svg>
-            Tutoriais
-        </h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Pular fila no GeForce Now</h3>
-                <p>Guia para acessar mais rápido o cloud gaming.</p>
-                <a href=https://youtu.be/53FPN0Z40WY?si=d3akX6XugJf_s331>Ver Tutorial</a>
-            </div>
-            <div class="card">
-                <h3>Criar conta no WeChat</h3>
-                <p>Registro sem necessidade de QR Code.</p>
-                <a href=https://youtu.be/pRE753i19O0?si=CB-90jkTyj_Vixli>Ver Tutorial</a>
-            </div>
-            <div class="card">
-                <h3>Verificação de RG chinês</h3>
-                <p>Como contornar a verificação de identidade.</p>
-                <a href=https://youtu.be/VVFVaARNq54?si=DleilujcxII0Tjul>Ver Tutorial</a>
-            </div>
-        </div>
-    </section>
+  <div class="links-grid">
 
-    <!-- Seção Nuvem -->
-    <section id="nuvem">
-        <h2>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" height="40" width="40">
-                <path d="M4.160625 11.25C2.553125 11.25 1.25 9.995625 1.25 8.448125c0 -1.546875 1.303125 -2.80125 2.910625 -2.80125 0.245625 -1.10125 1.12125 -2 2.296875 -2.3581250000000002 1.1749999999999998 -0.3575 2.4725 -0.12062500000000001 3.4025 0.625 0.9299999999999999 0.7437499999999999 1.3512499999999998 1.879375 1.10625 2.980625h0.61875c1.195625 0 2.165 0.9750000000000001 2.165 2.17875 0 1.204375 -0.969375 2.1793750000000003 -2.165625 2.1793750000000003H4.160625" stroke-width="1"></path>
-            </svg>
-            Nuvem
-        </h2>
-        <div class="grid">
-            <div class="card">
-                <h3>3 A Cloud Game</h3>
-                <p>Jogue seus jogos favoritos na nuvem com 3 A Cloud Game.</p>
-                <a href=https://3acloudgaming.com/>Acessar</a>
-            </div>
-            <div class="card">
-                <h3>Hayou Cloud Game</h3>
-                <p>Experimente a plataforma de cloud gaming Hayou.</p>
-                <a href=https://3839.br.uptodown.com/android>Acessar</a>
-            </div>
-            <div class="card">
-                <h3>Pombo Cloud Game</h3>
-                <p>Conheça o Pombo Cloud Game e sua biblioteca de jogos.</p>
-                <a href=https://www.mediafire.com/file/npezyqhtxgzixr7/%E9%A3%9E%E9%B8%BD%E4%BA%91%E6%B8%B8%E6%88%8F_1.0.4.apk/file>Acessar</a>
-            </div>
-        </div>
-    </section>
+    <div class="card" onclick="toggleSection('mods')">
+      <span>🔧 Mods</span>
+      <div id="mods" class="content-section">
+        <h2>Mods</h2>
+        <p>Modpacks brabos pra deixar seus jogos tunados. Em breve mais conteúdo aqui.</p>
+      </div>
+    </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <div class="social-icons">
-            <a href="#">&#xf099;</a> <!-- Ícone do Twitter -->
-            <a href="#">&#xf09a;</a> <!-- Ícone do Facebook -->
-            <a href="#">&#xf16d;</a> <!-- Ícone do Instagram -->
-        </div>
-        <p>&copy; 2023 Smokey. Todos os direitos reservados.</p>
-    </footer>
+    <div class="card" onclick="toggleSection('apps')">
+      <span>📱 Apps</span>
+      <div id="apps" class="content-section">
+        <h2>Apps</h2>
+        <p>Apps úteis, estilosos e leves. Fica ligado que tem mais chegando!</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleSection('jogos')">
+      <span>🎮 Jogos</span>
+      <div id="jogos" class="content-section">
+        <h2>Jogos</h2>
+        <p>Os melhores jogos pra baixar de graça, testados e aprovados.</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleSection('tutoriais')">
+      <span>📚 Tutoriais</span>
+      <div id="tutoriais" class="content-section">
+        <h2>Tutoriais</h2>
+        <p>Aprende fácil com os tutoriais mais objetivos da net. 🚀</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2025 Infinity Links | Feito pra impressionar 💻</footer>
+
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      const allSections = document.querySelectorAll('.content-section');
+
+      allSections.forEach(sec => {
+        if (sec.id !== id) {
+          sec.style.display = 'none';
+        }
+      });
+
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 
 </body>
 </html>
