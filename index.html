@@ -1,145 +1,138 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(270deg, #6a11cb, #2575fc, #ff0080, #ff8c00);
-  background-size: 800% 800%;
-  animation: gradientMove 15s ease infinite;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-@keyframes gradientMove {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-header {
-  padding: 40px 20px;
-  animation: fadeIn 1.5s ease;
-}
-header h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 600px;
-  margin: 40px auto;
-}
-.link-item {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.link-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  cursor: pointer;
-  gap: 10px;
-}
-.link-header:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-}
-.arrow {
-  transition: transform 0.3s ease;
-}
-.link-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
-  padding: 0 20px;
-  text-align: left;
-  font-size: 1rem;
-  opacity: 0;
-}
-.link-content.open {
-  max-height: 500px;
-  padding: 15px 20px;
-  opacity: 1;
-}
-.sub-link {
-  margin-top: 10px;
-  border-left: 3px solid rgba(255,255,255,0.3);
-  padding-left: 10px;
-}
-.sub-link-header {
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 8px 0;
-  font-weight: 500;
-}
-.sub-link-header:hover {
-  color: yellow;
-}
-.sub-link-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-.sub-link-content.open {
-  max-height: 300px;
-  opacity: 1;
-  padding: 8px 0;
-}
-a {
-  display: inline-block;
-  padding: 8px 15px;
-  margin: 5px 0;
-  background: linear-gradient(270deg, #6a11cb, #2575fc, #ff0080, #ff8c00);
-  background-size: 800% 800%;
-  animation: gradientMove 8s ease infinite;
-  color: white;
-  font-weight: 600;
-  border-radius: 12px;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(255, 0, 128, 0.7);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 0, 128, 1);
-}
-footer {
-  padding: 20px;
-  font-size: 0.9rem;
-  opacity: 0.7;
-  animation: fadeIn 2s ease;
-}
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQae1ZKjylHEMapxCJGQqLgWjxwKfQTx6IsRMcn74MSwxAvibQ8tKB11b8&s=10');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    header {
+      padding: 40px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+    .link-item {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .link-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      cursor: pointer;
+      gap: 10px;
+    }
+    .link-header:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+    .link-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+      padding: 0 20px;
+      text-align: left;
+      font-size: 1rem;
+      opacity: 0;
+    }
+    .link-content.open {
+      max-height: 500px;
+      padding: 15px 20px;
+      opacity: 1;
+    }
+    .sub-link {
+      margin-top: 10px;
+      border-left: 3px solid rgba(255,255,255,0.3);
+      padding-left: 10px;
+    }
+    .sub-link-header {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 8px 0;
+      font-weight: 500;
+    }
+    .sub-link-header:hover {
+      color: yellow;
+    }
+    .sub-link-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .sub-link-content.open {
+      max-height: 300px;
+      opacity: 1;
+      padding: 8px 0;
+    }
+    a {
+      display: inline-block;
+      padding: 8px 15px;
+      margin: 5px 0;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 3px 6px rgba(106, 17, 203, 0.7);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255, 0, 128, 0.9);
+    }
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      animation: fadeIn 2s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
 </head>
 <body>
 
@@ -244,4 +237,4 @@ function toggleSubSection(element) {
 </script>
 
 </body>
-</html/>
+</html>
