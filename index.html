@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌐 Meu Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
 * {
   margin: 0;
@@ -112,13 +112,22 @@ header p {
   padding: 8px 0;
 }
 a {
-  color: yellow;
-  text-decoration: underline;
-  transition: transform 0.2s ease;
   display: inline-block;
+  padding: 8px 15px;
+  margin: 5px 0;
+  background: linear-gradient(270deg, #6a11cb, #2575fc, #ff0080, #ff8c00);
+  background-size: 800% 800%;
+  animation: gradientMove 8s ease infinite;
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 a:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 0, 128, 1);
 }
 footer {
   padding: 20px;
@@ -135,13 +144,12 @@ footer {
 <body>
 
 <header>
-  <h1>🌟 Meu Hub 🌟</h1>
-  <p>Todos os meus cantos na internet num só lugar</p>
+  <h1>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</h1>
+  <p>Todos os meus links em um só lugar.</p>
 </header>
 
 <div class="links">
 
-  <!-- Apps -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       📱 Apps <span class="arrow">▼</span>
@@ -164,7 +172,6 @@ footer {
     </div>
   </div>
 
-  <!-- Mods -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       🛠️ Mods <span class="arrow">▼</span>
@@ -180,7 +187,6 @@ footer {
     </div>
   </div>
 
-  <!-- Games -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       🎯 Games <span class="arrow">▼</span>
@@ -196,7 +202,6 @@ footer {
     </div>
   </div>
 
-  <!-- Tutoriais -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       📚 Tutoriais <span class="arrow">▼</span>
@@ -239,4 +244,4 @@ function toggleSubSection(element) {
 </script>
 
 </body>
-</html>
+</html/>
