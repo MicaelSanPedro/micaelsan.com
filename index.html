@@ -1,212 +1,242 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infinity Links</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/jpeg;base64,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");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(4px);
-  z-index: -1;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌐 Meu Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-    header {
-      width: 100%;
-      padding: 50px 20px 20px;
-      text-align: center;
-      background: linear-gradient(to right, #00ffd5, #007aff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInDown 1s ease;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0,255,213,0.4);
-    }
-
-    .hero {
-      margin: 20px 20px;
-      text-align: center;
-      animation: fadeIn 2s ease;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 90%;
-      max-width: 1000px;
-      margin: 30px 0;
-      animation: fadeInUp 1.5s ease;
-    }
-
-    .card {
-      background: #1e1e2f;
-      padding: 25px;
-      border-radius: 15px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 15px rgba(0,255,213,0.1);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0,255,213,0.5);
-    }
-
-    .card span {
-      color: #00ffd5;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .content-section {
-      display: none;
-      background: #2a2a3f;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 0 15px rgba(0,255,213,0.2);
-      animation: fadeIn 0.5s ease;
-    }
-
-    .content-section h2 {
-      color: #00ffd5;
-      margin-bottom: 10px;
-      font-size: 1.5rem;
-    }
-
-    .content-section p {
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #777;
-      animation: fadeIn 2s ease;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(270deg, #6a11cb, #2575fc, #ff0080, #ff8c00);
+  background-size: 800% 800%;
+  animation: gradientMove 15s ease infinite;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+header {
+  padding: 40px 20px;
+  animation: fadeIn 1.5s ease;
+}
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+}
+.link-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.link-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  gap: 10px;
+}
+.link-header:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+.arrow {
+  transition: transform 0.3s ease;
+}
+.link-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+  padding: 0 20px;
+  text-align: left;
+  font-size: 1rem;
+  opacity: 0;
+}
+.link-content.open {
+  max-height: 500px;
+  padding: 15px 20px;
+  opacity: 1;
+}
+.sub-link {
+  margin-top: 10px;
+  border-left: 3px solid rgba(255,255,255,0.3);
+  padding-left: 10px;
+}
+.sub-link-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px 0;
+  font-weight: 500;
+}
+.sub-link-header:hover {
+  color: yellow;
+}
+.sub-link-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.sub-link-content.open {
+  max-height: 300px;
+  opacity: 1;
+  padding: 8px 0;
+}
+a {
+  color: yellow;
+  text-decoration: underline;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+a:hover {
+  transform: scale(1.05);
+}
+footer {
+  padding: 20px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  animation: fadeIn 2s ease;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Infinity Links</h1>
-  </header>
+<header>
+  <h1>🌟 Meu Hub 🌟</h1>
+  <p>Todos os meus cantos na internet num só lugar</p>
+</header>
 
-  <div class="hero">
-    <p>Clica num card e vê a magia acontecer: conteúdo abre embaixo dele! 🔥</p>
+<div class="links">
+
+  <!-- Apps -->
+  <div class="link-item">
+    <div class="link-header" onclick="toggleSection(this)">
+      📱 Apps <span class="arrow">▼</span>
+    </div>
+    <div class="link-content">
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">☁️ Nuvens <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">Google Drive</a></p>
+          <p><a href="#">Dropbox</a></p>
+        </div>
+      </div>
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">📂 Gerenciadores <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">Evernote</a></p>
+          <p><a href="#">Notion</a></p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="links-grid">
-
-    <div class="card" onclick="toggleSection('mods')">
-      <span>🔧 Mods</span>
-      <div id="mods" class="content-section">
-        <h2>Mods</h2>
-        <p>Modpacks brabos pra deixar seus jogos tunados. Em breve mais conteúdo aqui.</p>
+  <!-- Mods -->
+  <div class="link-item">
+    <div class="link-header" onclick="toggleSection(this)">
+      🛠️ Mods <span class="arrow">▼</span>
+    </div>
+    <div class="link-content">
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">🎮 Jogos Modificados <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">Minecraft Mod</a></p>
+          <p><a href="#">GTA Mod</a></p>
+        </div>
       </div>
     </div>
-
-    <div class="card" onclick="toggleSection('apps')">
-      <span>📱 Apps</span>
-      <div id="apps" class="content-section">
-        <h2>Apps</h2>
-        <p>Apps úteis, estilosos e leves. Fica ligado que tem mais chegando!</p>
-      </div>
-    </div>
-
-    <div class="card" onclick="toggleSection('jogos')">
-      <span>🎮 Jogos</span>
-      <div id="jogos" class="content-section">
-        <h2>Jogos</h2>
-        <p>Os melhores jogos pra baixar de graça, testados e aprovados.</p>
-      </div>
-    </div>
-
-    <div class="card" onclick="toggleSection('tutoriais')">
-      <span>📚 Tutoriais</span>
-      <div id="tutoriais" class="content-section">
-        <h2>Tutoriais</h2>
-        <p>Aprende fácil com os tutoriais mais objetivos da net. 🚀</p>
-      </div>
-    </div>
-
   </div>
 
-  <footer>© 2025 Infinity Links | Feito pra impressionar 💻</footer>
+  <!-- Games -->
+  <div class="link-item">
+    <div class="link-header" onclick="toggleSection(this)">
+      🎯 Games <span class="arrow">▼</span>
+    </div>
+    <div class="link-content">
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">🔥 Favoritos <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">Fortnite</a></p>
+          <p><a href="#">Valorant</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      const allSections = document.querySelectorAll('.content-section');
+  <!-- Tutoriais -->
+  <div class="link-item">
+    <div class="link-header" onclick="toggleSection(this)">
+      📚 Tutoriais <span class="arrow">▼</span>
+    </div>
+    <div class="link-content">
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">💻 Programação <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
+        </div>
+      </div>
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">🎨 Design <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/3GwjfUFyY6M" title="YouTube video"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      allSections.forEach(sec => {
-        if (sec.id !== id) {
-          sec.style.display = 'none';
-        }
-      });
+</div>
 
-      if (section.style.display === 'block') {
-  section.style.display = 'none';
-} else {
-  allSections.forEach(sec => sec.style.display = 'none');
-  section.style.display = 'block';
+<footer>
+  © 2025 - Feito com 💜 por Mim
+</footer>
+
+<script>
+function toggleSection(element) {
+  const content = element.nextElementSibling;
+  const arrow = element.querySelector('.arrow');
+  content.classList.toggle("open");
+  arrow.style.transform = content.classList.contains("open") ? "rotate(180deg)" : "rotate(0deg)";
 }
-
-    }
-  </script>
+function toggleSubSection(element) {
+  const content = element.nextElementSibling;
+  const arrow = element.querySelector('.arrow');
+  content.classList.toggle("open");
+  arrow.style.transform = content.classList.contains("open") ? "rotate(90deg)" : "rotate(0deg)";
+}
+</script>
 
 </body>
 </html>
