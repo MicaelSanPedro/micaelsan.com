@@ -4,42 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Estilos Gerais */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQae1ZKjylHEMapxCJGQqLgWjxwKfQTx6IsRMcn74MSwxAvibQ8tKB11b8&s=10');
+      background-image: url('https://encrypted-tbn0.gstatic.com');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
       text-align: center;
       padding: 20px;
     }
-    header {
-      padding: 40px 20px;
-      animation: fadeIn 1.5s ease;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 600px;
-      margin: 40px auto;
-    }
+
+    header { padding: 40px 20px; animation: fadeIn 1.5s ease; }
+    header h1 { font-size: 2.8rem; font-weight: 600; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; opacity: 0.9; }
+
+    .links { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 40px auto; }
+
+    /* Itens Principais */
     .link-item {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
@@ -47,91 +33,41 @@
       overflow: hidden;
       backdrop-filter: blur(15px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .link-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      cursor: pointer;
-      gap: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 15px 20px; font-size: 1.3rem; font-weight: 600; cursor: pointer;
     }
-    .link-header:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
-    }
-    .arrow {
-      transition: transform 0.3s ease;
-    }
+    .link-header:hover { background: rgba(255, 255, 255, 0.1); }
+
+    /* Conteúdo Expansível */
     .link-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
-      padding: 0 20px;
-      text-align: left;
-      font-size: 1rem;
-      opacity: 0;
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.3s ease;
+      padding: 0 20px; text-align: left;
     }
-    .link-content.open {
-      max-height: 500px;
-      padding: 15px 20px;
-      opacity: 1;
-    }
-    .sub-link {
-      margin-top: 10px;
-      border-left: 3px solid rgba(255,255,255,0.3);
-      padding-left: 10px;
-    }
-    .sub-link-header {
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      padding: 8px 0;
-      font-weight: 500;
-    }
-    .sub-link-header:hover {
-      color: yellow;
-    }
-    .sub-link-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-    .sub-link-content.open {
-      max-height: 300px;
-      opacity: 1;
-      padding: 8px 0;
-    }
+    .link-content.open { max-height: 1000px; padding: 15px 20px; opacity: 1; }
+
+    /* Subseções */
+    .sub-link { margin-top: 10px; border-left: 3px solid rgba(255,255,255,0.3); padding-left: 10px; }
+    .sub-link-header { display: flex; justify-content: space-between; cursor: pointer; padding: 8px 0; font-weight: 500; }
+    .sub-link-header:hover { color: #ffff00; }
+    .sub-link-content { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
+    .sub-link-content.open { max-height: 500px; opacity: 1; padding: 8px 0; }
+
+    /* Botões de Link */
     a {
-      display: inline-block;
-      padding: 8px 15px;
-      margin: 5px 0;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      font-weight: 600;
-      border-radius: 12px;
-      text-decoration: none;
+      display: inline-block; padding: 8px 15px; margin: 5px 0;
+      background: rgba(255, 255, 255, 0.2); color: white;
+      font-weight: 600; border-radius: 12px; text-decoration: none;
       box-shadow: 0 3px 6px rgba(106, 17, 203, 0.7);
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-    a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(255, 0, 128, 0.9);
-    }
-    footer {
-      padding: 20px;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      animation: fadeIn 2s ease;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+    a:hover { transform: scale(1.05); box-shadow: 0 0 12px rgba(255, 0, 128, 0.9); }
+
+    .arrow { transition: transform 0.3s ease; }
+    footer { padding: 20px; font-size: 0.9rem; opacity: 0.7; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
   </style>
 </head>
 <body>
@@ -143,11 +79,26 @@
 
 <div class="links">
 
+  <!-- SEÇÃO APPS (Atualizada com PC e Android) -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       📱 Apps <span class="arrow">▼</span>
     </div>
     <div class="link-content">
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">💻 PC <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">Discord PC</a></p>
+          <p><a href="#">Steam</a></p>
+        </div>
+      </div>
+      <div class="sub-link">
+        <div class="sub-link-header" onclick="toggleSubSection(this)">🤖 Android <span class="arrow">▶</span></div>
+        <div class="sub-link-content">
+          <p><a href="#">WhatsApp Mod</a></p>
+          <p><a href="#">Insta Pro</a></p>
+        </div>
+      </div>
       <div class="sub-link">
         <div class="sub-link-header" onclick="toggleSubSection(this)">☁️ Nuvens <span class="arrow">▶</span></div>
         <div class="sub-link-content">
@@ -155,16 +106,10 @@
           <p><a href="#">Dropbox</a></p>
         </div>
       </div>
-      <div class="sub-link">
-        <div class="sub-link-header" onclick="toggleSubSection(this)">📂 Gerenciadores <span class="arrow">▶</span></div>
-        <div class="sub-link-content">
-          <p><a href="#">Evernote</a></p>
-          <p><a href="#">Notion</a></p>
-        </div>
-      </div>
     </div>
   </div>
 
+  <!-- SEÇÃO MODS -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       🛠️ Mods <span class="arrow">▼</span>
@@ -175,41 +120,6 @@
         <div class="sub-link-content">
           <p><a href="#">Minecraft Mod</a></p>
           <p><a href="#">GTA Mod</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="link-item">
-    <div class="link-header" onclick="toggleSection(this)">
-      🎯 Games <span class="arrow">▼</span>
-    </div>
-    <div class="link-content">
-      <div class="sub-link">
-        <div class="sub-link-header" onclick="toggleSubSection(this)">🔥 Favoritos <span class="arrow">▶</span></div>
-        <div class="sub-link-content">
-          <p><a href="#">Fortnite</a></p>
-          <p><a href="#">Valorant</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="link-item">
-    <div class="link-header" onclick="toggleSection(this)">
-      📚 Tutoriais <span class="arrow">▼</span>
-    </div>
-    <div class="link-content">
-      <div class="sub-link">
-        <div class="sub-link-header" onclick="toggleSubSection(this)">💻 Programação <span class="arrow">▶</span></div>
-        <div class="sub-link-content">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
-        </div>
-      </div>
-      <div class="sub-link">
-        <div class="sub-link-header" onclick="toggleSubSection(this)">🎨 Design <span class="arrow">▶</span></div>
-        <div class="sub-link-content">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/3GwjfUFyY6M" title="YouTube video"></iframe>
         </div>
       </div>
     </div>
