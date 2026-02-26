@@ -6,7 +6,6 @@
   <title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
-    /* Estilos Gerais */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
@@ -18,55 +17,37 @@
       text-align: center;
       padding: 20px;
     }
-
     header { padding: 40px 20px; animation: fadeIn 1.5s ease; }
     header h1 { font-size: 2.8rem; font-weight: 600; margin-bottom: 10px; }
-    header p { font-size: 1.2rem; opacity: 0.9; }
-
     .links { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 40px auto; }
-
-    /* Itens Principais */
     .link-item {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
       border: 2px solid rgba(255, 255, 255, 0.2);
       overflow: hidden;
       backdrop-filter: blur(15px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .link-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 15px 20px; font-size: 1.3rem; font-weight: 600; cursor: pointer;
     }
-    .link-header:hover { background: rgba(255, 255, 255, 0.1); }
-
-    /* Conteúdo Expansível */
     .link-content {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.3s ease;
-      padding: 0 20px; text-align: left;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+      padding: 0 20px; text-align: left; opacity: 0;
     }
     .link-content.open { max-height: 1000px; padding: 15px 20px; opacity: 1; }
-
-    /* Subseções */
     .sub-link { margin-top: 10px; border-left: 3px solid rgba(255,255,255,0.3); padding-left: 10px; }
     .sub-link-header { display: flex; justify-content: space-between; cursor: pointer; padding: 8px 0; font-weight: 500; }
-    .sub-link-header:hover { color: #ffff00; }
-    .sub-link-content { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
+    .sub-link-content { max-height: 0; overflow: hidden; transition: all 0.4s ease; opacity: 0; }
     .sub-link-content.open { max-height: 500px; opacity: 1; padding: 8px 0; }
-
-    /* Botões de Link */
     a {
       display: inline-block; padding: 8px 15px; margin: 5px 0;
       background: rgba(255, 255, 255, 0.2); color: white;
       font-weight: 600; border-radius: 12px; text-decoration: none;
       box-shadow: 0 3px 6px rgba(106, 17, 203, 0.7);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-    a:hover { transform: scale(1.05); box-shadow: 0 0 12px rgba(255, 0, 128, 0.9); }
-
     .arrow { transition: transform 0.3s ease; }
-    footer { padding: 20px; font-size: 0.9rem; opacity: 0.7; }
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
   </style>
 </head>
@@ -78,32 +59,33 @@
 </header>
 
 <div class="links">
-
-  <!-- SEÇÃO APPS (Atualizada com PC e Android) -->
+  <!-- SEÇÃO APPS -->
   <div class="link-item">
     <div class="link-header" onclick="toggleSection(this)">
       📱 Apps <span class="arrow">▼</span>
     </div>
     <div class="link-content">
+      <!-- Subseção PC -->
       <div class="sub-link">
         <div class="sub-link-header" onclick="toggleSubSection(this)">💻 PC <span class="arrow">▶</span></div>
         <div class="sub-link-content">
-          <p><a href="#">Discord PC</a></p>
-          <p><a href="#">Steam</a></p>
+          <p><a href="#">Download PC 1</a></p>
+          <p><a href="#">Download PC 2</a></p>
         </div>
       </div>
+      <!-- Subseção Android -->
       <div class="sub-link">
         <div class="sub-link-header" onclick="toggleSubSection(this)">🤖 Android <span class="arrow">▶</span></div>
         <div class="sub-link-content">
-          <p><a href="#">WhatsApp Mod</a></p>
-          <p><a href="#">Insta Pro</a></p>
+          <p><a href="#">App Android 1</a></p>
+          <p><a href="#">App Android 2</a></p>
         </div>
       </div>
+      <!-- Outros -->
       <div class="sub-link">
         <div class="sub-link-header" onclick="toggleSubSection(this)">☁️ Nuvens <span class="arrow">▶</span></div>
         <div class="sub-link-content">
           <p><a href="#">Google Drive</a></p>
-          <p><a href="#">Dropbox</a></p>
         </div>
       </div>
     </div>
@@ -116,20 +98,14 @@
     </div>
     <div class="link-content">
       <div class="sub-link">
-        <div class="sub-link-header" onclick="toggleSubSection(this)">🎮 Jogos Modificados <span class="arrow">▶</span></div>
+        <div class="sub-link-header" onclick="toggleSubSection(this)">🎮 Jogos <span class="arrow">▶</span></div>
         <div class="sub-link-content">
-          <p><a href="#">Minecraft Mod</a></p>
-          <p><a href="#">GTA Mod</a></p>
+          <p><a href="#">Minecraft</a></p>
         </div>
       </div>
     </div>
   </div>
-
 </div>
-
-<footer>
-  © 2025 - Feito com 💜 por Mim
-</footer>
 
 <script>
 function toggleSection(element) {
