@@ -9,46 +9,6 @@
     :root { --primary: #00d2ff; --secondary: #9d50bb; --bg: #050505; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    /* Tela de Login */
-    #login-screen {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg); display: flex; flex-direction: column;
-      align-items: center; justify-content: center; z-index: 1000;
-    }
-    
-    /* Container do Input com Botão de Mostrar Senha */
-    .password-container {
-      position: relative;
-      margin-bottom: 15px;
-      width: 250px;
-    }
-    #login-screen input {
-      width: 100%;
-      padding: 12px 40px 12px 12px; border-radius: 8px; border: 1px solid var(--primary);
-      background: #111; color: white; text-align: center;
-      outline: none;
-    }
-    .toggle-pass {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      background: none;
-      border: none;
-      fill: var(--primary);
-      display: flex;
-      align-items: center;
-    }
-
-    #login-screen button.enter-btn {
-      padding: 10px 25px; border-radius: 8px; border: none;
-      background: var(--primary); color: black; font-weight: bold; cursor: pointer;
-    }
-
-    /* Conteúdo do Site */
-    #main-content { display: none; }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg) radial-gradient(circle at top, #1a1a2e 0%, #050505 100%) no-repeat fixed;
@@ -99,19 +59,6 @@
 </head>
 <body>
 
-<!-- TELA DE LOGIN -->
-<div id="login-screen">
-  <h2 style="margin-bottom: 20px; color: white;">Acesso Restrito</h2>
-  <div class="password-container">
-    <input type="password" id="password" placeholder="Digite a senha">
-    <button class="toggle-pass" onclick="toggleVisibility()">
-      <svg id="eye-icon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-    </button>
-  </div>
-  <button class="enter-btn" onclick="checkPassword()">Entrar</button>
-</div>
-
-<!-- CONTEÚDO PRINCIPAL -->
 <div id="main-content">
   <header>
     <h1>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</h1>
@@ -171,33 +118,12 @@
 </div>
 
 <script>
-  function toggleVisibility() {
-    const input = document.getElementById('password');
-    input.type = input.type === "password" ? "text" : "password";
-  }
-
-  function checkPassword() {
-    const pass = document.getElementById('password').value;
-    if (pass === "karmacore" || pass === "admin") {
-      document.getElementById('login-screen').style.display = "none";
-      document.getElementById('main-content').style.display = "block";
-    } else {
-      alert("Senha incorreta!");
-    }
-  }
-
   function toggle(header) {
     const content = header.nextElementSibling;
     const arrow = header.querySelector('.arrow');
     content.classList.toggle('open');
     if(arrow) arrow.classList.toggle('rotate');
   }
-
-  document.getElementById('password').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      checkPassword();
-    }
-  });
 </script>
 
 </body>
