@@ -6,10 +6,9 @@
   <title>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</title>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <style>
-    :root { --primary: #00d2ff; --secondary: #9d50bb; --bg: #050505; --warning: #ffcc00; }
+    :root { --primary: #00d2ff; --secondary: #9d50bb; --bg: #050505; --warning: #ffcc00; --youtube: #ff0000; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    /* Ajuste para o rodapé ficar sempre embaixo */
     html, body { height: 100%; }
     
     body {
@@ -23,33 +22,95 @@
     }
 
     header h1 { 
-      font-size: 2.2rem; text-align: center; padding: 40px 0;
+      font-size: 2.2rem; text-align: center; padding: 40px 0 20px 0;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    /* Container cresce para empurrar o footer */
     .container { 
       max-width: 500px; 
       margin: 0 auto; 
       flex: 1 0 auto; 
       width: 100%;
+      position: relative;
     }
 
+    /* BOTÃO YOUTUBE */
+    .yt-featured {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 25px;
+      transition: 0.4s;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+    .yt-featured:hover {
+      background: var(--youtube);
+      color: white;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+      transform: translateY(-3px);
+    }
+    .yt-featured svg { width: 24px; fill: currentColor; }
+
     /* SEÇÃO DE APPS */
-    .folder { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; overflow: hidden; margin-bottom: 15px; }
+    .folder { 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.1); 
+      border-radius: 12px; 
+      overflow: hidden; 
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 5;
+    }
     .folder-header { padding: 15px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: bold; }
     .content { max-height: 0; overflow: hidden; opacity: 0; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 15px; }
-    .content.open { max-height: 1000px; opacity: 1; padding-bottom: 15px; }
+    .content.open { max-height: 1200px; opacity: 1; padding-bottom: 15px; }
     
-    .btn { display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); color: white; padding: 12px; margin: 8px 0; text-decoration: none; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
+    .btn { display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); color: white; padding: 12px; margin: 8px 0 0 0; text-decoration: none; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; position: relative; z-index: 2; }
     .btn:hover { background: var(--primary); color: #000; transform: translateX(5px); }
 
-    .msg-box { font-size: 0.75rem; padding: 8px; border-radius: 6px; margin-bottom: 10px; border: 1px dashed; }
-    .warning { color: var(--warning); border-color: var(--warning); background: rgba(255,204,0,0.05); }
-    .info { color: var(--primary); border-color: var(--primary); background: rgba(0,210,255,0.05); }
+    /* LINHA DE CONEXÃO MODERNA */
+    .msg-box { 
+      font-size: 0.75rem; 
+      padding: 10px 12px; 
+      border-radius: 8px; 
+      margin: 12px 0 20px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 1.4;
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+    }
 
-    /* CAFÉ REALISTA */
+    .msg-box::before {
+      content: "";
+      position: absolute;
+      top: -15px; 
+      left: -15px;
+      width: 15px;
+      height: 25px;
+      border-left: 2px solid;
+      border-bottom: 2px solid;
+      border-bottom-left-radius: 8px;
+      opacity: 0.5;
+    }
+
+    .warning { color: var(--warning); border-color: rgba(255,204,0,0.2); }
+    .warning::before { border-color: var(--warning); }
+    
+    .info { color: var(--primary); border-color: rgba(0,210,255,0.2); }
+    .info::before { border-color: var(--primary); }
+
+    /* CAFÉ */
     .coffee-btn {
       position: fixed; bottom: 30px; right: 30px; z-index: 1000;
       width: 70px; height: 70px; cursor: pointer;
@@ -70,7 +131,7 @@
       100% { transform: translate(-80%, -50px) scale(3.5); opacity: 0; }
     }
 
-    /* MODAL DOAÇÃO */
+    /* MODAL */
     #modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000;
@@ -79,7 +140,6 @@
     .modal { background: #111; border: 1px solid var(--secondary); padding: 30px; border-radius: 20px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 0 30px rgba(157, 80, 187, 0.3); }
     .modal-btn { display: block; padding: 12px; background: var(--secondary); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 15px; }
 
-    /* Footer Fixado na Base */
     footer { 
       text-align: center; 
       padding: 20px 0; 
@@ -103,7 +163,7 @@
 <div id="modal-overlay" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <h2 style="color: var(--secondary); margin-bottom: 10px;">Apoie o Projeto ☕</h2>
-    <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.8;">Contribua com qualquer valor para manter os links ativos e as ferramentas atualizadas!</p>
+    <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.8;">Contribua com qualquer valor para manter os links ativos!</p>
     <a href="https://livepix.gg" target="_blank" class="modal-btn">Fazer Doação</a>
     <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer;">Agora não</button>
   </div>
@@ -112,11 +172,18 @@
 <div class="container">
   <header><h1>◤✞ 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 ✞◥</h1></header>
 
+  <!-- LINK CORRIGIDO: https://www.youtube.com/@karmacoreofc -->
+  <a href="https://www.youtube.com/@karmacoreofc" target="_blank" class="yt-featured">
+    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    Inscreva-se no Canal (Karmacore)
+  </a>
+
+  <!-- PASTAS -->
   <div class="folder">
     <div class="folder-header" onclick="toggle(this)">
       <div style="display:flex; align-items:center; gap:10px;">
         <svg style="width:20px; fill:var(--primary)" viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
-        Apps
+        Apps / Downloads
       </div>
       <span>▼</span>
     </div>
@@ -127,9 +194,11 @@
         </div>
         <div class="content">
           <a href="https://www.mediafire.com" class="btn" target="_blank">📜 Lua Tools</a>
-          <div class="msg-box warning">⚠️ <b>PowerShell:</b> Botão direito > Executar.</div>
-          <a href="https://github.com" class="btn">⚙️ Millennium</a>
-          <div class="msg-box info">ℹ️ Download automático ao clicar.</div>
+          <div class="msg-box warning">⚠️ <b>Dica:</b> Clique com o botão direito no arquivo .ps1 e clique em executar com o power shell.</div>
+          
+          <a href="https://github.com" class="btn" target="_blank">⚙️ Millennium</a>
+          <div class="msg-box info">ℹ️ <b>Dica:</b> Download automático ao clicar.</div>
+          
           <a href="https://steamtools.net" class="btn" target="_blank">🎮 Steam Tools</a>
         </div>
       </div>
