@@ -1,211 +1,503 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KARMACORE | Micael San</title>
-  <link href="https://fonts.googleapis.com" rel="stylesheet">
-  <style>
-    :root { --primary: #00d2ff; --secondary: #9d50bb; --bg: #050505; --warning: #ffcc00; --youtube: #ff0000; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html, body { height: 100%; }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg) radial-gradient(circle at top, #1a1a2e 0%, #050505 100%) no-repeat fixed;
-      color: white; 
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARMACORE | Micael San</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --primary:#00d2ff;
+            --secondary:#9d50bb;
+            --bg:#050505;
+            --warning:#ffcc00;
+            --info-text: #b3b3b3;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-    /* HEADER COM EFEITO RAINBOW SUAVE */
-    header {
-      text-align: center;
-      padding: 50px 0 30px 0;
-    }
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 210, 255, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-    header h1 { 
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      background: linear-gradient(
-        to right, 
-        #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000
-      );
-      background-size: 400% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbow-glow 8s linear infinite;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-    }
+        body{
+            font-family:'Poppins',sans-serif;
+            background:var(--bg) radial-gradient(circle at top,#1a1a2e 0%,#050505 100%) no-repeat fixed;
+            color:white;
+            min-height:100vh;
+            padding:20px;
+            overflow-x:hidden;
+            display:flex;
+            flex-direction:column;
+            position: relative;
+        }
 
-    @keyframes rainbow-glow {
-      0% { background-position: 0% center; }
-      100% { background-position: 400% center; }
-    }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            pointer-events: none;
+            z-index: 999;
+        }
 
-    header span {
-      display: block;
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 8px;
-      color: rgba(255, 255, 255, 0.4);
-      margin-top: 5px;
-      text-transform: uppercase;
-    }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container{
+            max-width:520px;
+            width:100%;
+            margin:auto;
+            flex:1;
+            animation: fadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            position: relative;
+            z-index: 10;
+        }
 
-    .container { 
-      max-width: 500px; 
-      margin: 0 auto; 
-      flex: 1 0 auto; 
-      width: 100%;
-      position: relative;
-    }
+        header{
+            text-align:center;
+            padding:40px 0 20px 0;
+        }
+        header h1{
+            font-family:'Orbitron',sans-serif;
+            font-size:clamp(2rem,8vw,3.5rem);
+            letter-spacing:5px;
+            text-transform:uppercase;
+            background:linear-gradient( to right, #ff0000,#ff00ff,#0000ff,#00ffff,#00ff00,#ffff00,#ff0000 );
+            background-size:400%;
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            animation:rainbow 8s linear infinite;
+        }
+        @keyframes rainbow{ 0%{background-position:0%} 100%{background-position:400%} }
+        header span{ display:block; font-size:clamp(.7rem,3vw,1rem); letter-spacing:6px; opacity:.5; margin-top:5px; }
 
-    /* BOTÃO YOUTUBE AJUSTADO */
-    .yt-featured {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: rgba(255, 0, 0, 0.1);
-      border: 1px solid rgba(255, 0, 0, 0.3);
-      padding: 15px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      margin-bottom: 25px;
-      transition: 0.4s;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
-      position: relative;
-      z-index: 10;
-    }
-    .yt-featured:hover { background: var(--youtube); color: white; transform: translateY(-3px); }
+        /* BARRA DE PESQUISA */
+        .search-wrapper {
+            margin-bottom: 20px;
+        }
+        #appSearch {
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+        #appSearch:focus {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+        }
 
-    /* PASTAS */
-    .folder { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; overflow: hidden; margin-bottom: 15px; position: relative; z-index: 5; }
-    .folder-header { padding: 15px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: bold; }
-    .content { max-height: 0; overflow: hidden; opacity: 0; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 15px; }
-    .content.open { max-height: 1200px; opacity: 1; padding-bottom: 15px; }
-    
-    .btn { display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); color: white; padding: 12px; margin: 8px 0 0 0; text-decoration: none; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; position: relative; z-index: 2; }
-    .btn:hover { background: var(--primary); color: #000; transform: translateX(5px); }
+        .folder{
+            background:rgba(255,255,255,.02);
+            border:1px solid rgba(255,255,255,.05);
+            border-radius:14px;
+            overflow:hidden;
+            margin-bottom:15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .folder-header{
+            padding:20px;
+            cursor:pointer;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            font-weight:700;
+            letter-spacing: 1px;
+            transition: background 0.3s ease;
+        }
+        .folder-header:hover, .folder-header:focus {
+            background: rgba(0, 210, 255, 0.05);
+            outline: none;
+        }
+        .folder-header span {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        .folder-header.active span {
+            transform: rotate(180deg);
+            color: var(--secondary);
+        }
 
-    .msg-box { font-size: 0.75rem; padding: 10px 12px; border-radius: 8px; margin: 12px 0 20px 30px; border: 1px solid rgba(255, 255, 255, 0.1); line-height: 1.4; position: relative; background: rgba(255, 255, 255, 0.03); }
-    .msg-box::before { content: ""; position: absolute; top: -15px; left: -15px; width: 15px; height: 25px; border-left: 2px solid; border-bottom: 2px solid; border-bottom-left-radius: 8px; opacity: 0.5; }
-    .warning { color: var(--warning); border-color: rgba(255,204,0,0.2); }
-    .warning::before { border-color: var(--warning); }
-    .info { color: var(--primary); border-color: rgba(0,210,255,0.2); }
-    .info::before { border-color: var(--primary); }
+        .content{
+            max-height:0;
+            overflow:hidden;
+            opacity:0;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            padding:0 20px;
+        }
+        .content.open{
+            max-height:1800px;
+            opacity:1;
+            padding-bottom:20px;
+        }
 
-    /* CAFÉ */
-    .coffee-btn { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 100px; height: 100px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-    .cup-wrapper { position: relative; margin-top: 25px; }
-    .cup { position: relative; width: 50px; height: 42px; background: #fff; border-radius: 6px 6px 22px 22px; box-shadow: inset 0 -8px 12px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.5); z-index: 2; }
-    .cup-handle { position: absolute; right: -15px; top: 8px; width: 20px; height: 24px; border: 6px solid #fff; border-radius: 40% 15px 15px 40%; z-index: 1; }
-    .saucer { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 70px; height: 12px; background: #f0f0f0; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-    .smoke-container { position: absolute; top: -45px; left: 50%; transform: translateX(-50%); width: 60px; height: 80px; }
-    .smoke-particle { position: absolute; bottom: 10px; left: 50%; width: 18px; height: 45px; background: linear-gradient(to top, rgba(255,255,255,0.8), rgba(255,255,255,0.2), transparent); border-radius: 50% 50% 20% 20%; filter: blur(4px); animation: finalSmoke 3s infinite ease-in-out; opacity: 0; }
-    @keyframes finalSmoke { 0% { transform: translateY(0) scaleX(1) scaleY(1); opacity: 0; } 15% { opacity: 0.8; } 50% { transform: translateY(-40px) scaleX(2.2) scaleY(1.8) rotate(8deg); opacity: 0.4; } 100% { transform: translateY(-95px) scaleX(4) scaleY(2.8) rotate(-12deg); opacity: 0; } }
+        .sub-folder {
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 2px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            box-shadow: none;
+        }
+        .sub-folder:hover {
+            border-left-color: var(--secondary);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .sub-folder .folder-header {
+            padding: 15px 20px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #eee;
+        }
 
-    /* MODAL */
-    #modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(12px); display: none; align-items: center; justify-content: center; z-index: 2000; transition: opacity 0.3s ease; }
-    .modal { background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(157, 80, 187, 0.4); padding: 40px 30px; border-radius: 24px; text-align: center; max-width: 380px; width: 90%; }
-    .modal-open { animation: modalShow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    .modal-close { animation: modalHide 0.3s ease-in forwards; }
-    @keyframes modalShow { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    @keyframes modalHide { from { transform: scale(1); opacity: 1; } to { transform: scale(0.8); opacity: 0; } }
-    .modal h2 { font-size: 1.8rem; margin-bottom: 15px; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .modal-btn { display: block; padding: 16px; background: linear-gradient(45deg, #00d2ff, #9d50bb); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; }
+        .btn{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            background:rgba(255,255,255,.04);
+            color:white;
+            padding:14px 18px;
+            margin-top:10px;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,210,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn:hover::after { left: 100%; }
+        .btn:hover, .btn:focus{
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+            transform:translateX(5px);
+            outline: none;
+        }
 
-    footer { text-align: center; padding: 20px 0; opacity: 0.2; font-size: 0.7rem; }
-  </style>
+        .msg-box{
+            font-size:.8rem;
+            padding:12px 15px;
+            border-radius:8px;
+            margin:12px 0 20px 35px;
+            border:1px solid rgba(0,210,255,.2);
+            background:rgba(0,210,255,.02);
+            position:relative;
+            line-height:1.6;
+            color: var(--info-text);
+        }
+        .msg-box::before{
+            content:"";
+            position:absolute;
+            top:-10px;
+            left:-18px;
+            width:15px;
+            height:20px;
+            border-left:2px solid var(--primary);
+            border-bottom:2px solid var(--primary);
+            border-bottom-left-radius:8px;
+            opacity:.7;
+        }
+
+        /* BOTÃO CAFÉ */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 210, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+        }
+        .coffee-btn{
+            position:fixed;
+            bottom:25px;
+            right:25px;
+            width:75px;
+            height:75px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            z-index:1000;
+            transition:.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseGlow 3s infinite;
+            backdrop-filter: blur(5px);
+        }
+        .coffee-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(0, 210, 255, 0.1);
+        }
+        .coffee-btn:active{ transform:scale(.9) rotate(-5deg); }
+        
+        .cup-wrapper{ 
+            position:relative; 
+            transform: scale(0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .cup{ width:45px; height:40px; background:#fff; border-radius:6px 6px 22px 22px; box-shadow:inset 0 -8px 12px rgba(0,0,0,.15),0 5px 15px rgba(0,0,0,.5); }
+        .cup-handle{ position:absolute; right:-14px; top:8px; width:18px; height:22px; border:5px solid #fff; border-radius:40% 15px 15px 40%; }
+        .saucer{ position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:65px; height:10px; background:#f0f0f0; border-radius:50%; }
+        .smoke-container{ position:absolute; top:-35px; left:50%; transform:translateX(-50%); width:60px; height:90px; }
+        .smoke{ position:absolute; bottom:0; left:50%; width:16px; height:50px; background:linear-gradient(to top,rgba(255,255,255,.8),transparent); border-radius:50%; filter:blur(5px); opacity:0; animation:steam 4s infinite ease-in-out; }
+        .smoke:nth-child(2){animation-delay:1.2s}
+        .smoke:nth-child(3){animation-delay:2.4s}
+        @keyframes steam{
+            0%{ transform:translate(-50%,0) scale(.8) rotate(0deg); opacity:0; }
+            15%{ opacity:.8; }
+            40%{ transform:translate(-40%,-30px) scale(1.2) rotate(10deg); }
+            70%{ transform:translate(-65%,-70px) scale(1.7) rotate(-15deg); opacity:.4; }
+            100%{ transform:translate(-45%,-110px) scale(2.3) rotate(25deg); opacity:0; }
+        }
+
+        #modal-overlay{ 
+            position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,.7); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display:none; align-items:center; justify-content:center; z-index:2000; 
+        }
+        .modal{ 
+            background:linear-gradient(145deg, rgba(20,20,25,0.95), rgba(10,10,15,0.95)); 
+            padding:40px 30px; 
+            border-radius:24px; 
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            text-align:center; max-width:360px; width:90%; 
+            transform:scale(.8) translateY(20px); opacity:0; 
+            transition:.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position:relative; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+        }
+        .modal.show{ transform:scale(1) translateY(0); opacity:1; }
+        .close-btn{ 
+            position:absolute; top:15px; right:20px; font-size:24px; 
+            cursor:pointer; opacity:.5; transition:.3s; 
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(255,255,255,0.05);
+        }
+        .close-btn:hover{ opacity:1; transform:rotate(90deg); color: var(--warning); }
+        
+        .pix-display {
+            background: #030303;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--primary);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-top: 25px;
+            user-select: all;
+            cursor: text;
+            position: relative;
+        }
+        .pix-display::before {
+            content: "CHAVE_PIX //";
+            display: block;
+            text-align: left;
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        footer{ 
+            text-align:center; padding:40px 20px; opacity:.4; 
+            font-size:.75rem; margin-top: auto; letter-spacing: 1px;
+            position: relative; z-index: 10;
+        }
+    </style>
 </head>
 <body>
 
-<div class="coffee-btn" onclick="openModal()">
-  <div class="cup-wrapper">
-    <div class="smoke-container">
-      <div class="smoke-particle" style="animation-delay: 0s; left: 15%;"></div>
-      <div class="smoke-particle" style="animation-delay: 1s; left: 40%;"></div>
-      <div class="smoke-particle" style="animation-delay: 2s; left: 65%;"></div>
-    </div>
-    <div class="cup"></div>
-    <div class="cup-handle"></div>
-    <div class="saucer"></div>
-  </div>
-</div>
-
-<div id="modal-overlay" onclick="closeModal()">
-  <div id="modal-content" class="modal" onclick="event.stopPropagation()">
-    <h2>Apoie o Projeto ☕</h2>
-    <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Sua contribuição ajuda a manter os servidores ativos e os links atualizados!</p>
-    <a href="https://livepix.gg" target="_blank" class="modal-btn">Fazer Doação via PIX</a>
-    <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:20px; cursor:pointer;">Talvez outra hora</button>
-  </div>
-</div>
-
-<div class="container">
-  <header>
-    <h1>KARMACORE</h1>
-    <span>"Micael San"</span>
-  </header>
-
-  <!-- BOTÃO YOUTUBE SEM O TEXTO KARMACORE -->
-  <a href="https://www.youtube.com" target="_blank" class="yt-featured">
-    <svg style="width:24px; fill:currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z""")/>></svg>
-    Inscreva-se no Canal
-  </a>
-
-  <div class="folder">
-    <div class="folder-header" onclick="toggle(this)">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <svg style="width:20px; fill:var(--primary)" viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z""")/>></svg>
-        Apps / Downloads
-      </div>
-      <span>▼</span>
-    </div>
-    <div class="content">
-      <div class="sub-folder" style="background: rgba(0,0,0,0.3); border-radius: 8px; margin-top: 10px;">
-        <div class="folder-header" onclick="toggle(this)" style="font-size: 0.9rem; color: #ccc;">
-          <span>💻 Softwares PC</span> <span>▼</span>
+    <div class="coffee-btn" onclick="openModal()" tabindex="0" onkeydown="if(event.key==='Enter') openModal()" aria-label="Apoiar Projeto">
+        <div class="cup-wrapper">
+            <div class="smoke-container">
+                <div class="smoke"></div><div class="smoke"></div><div class="smoke"></div>
+            </div>
+            <div class="cup"></div>
+            <div class="cup-handle"></div>
+            <div class="saucer"></div>
         </div>
-        <div class="content">
-          <a href="https://www.mediafire.com" class="btn" target="_blank">📜 Lua Tools</a>
-          <div class="msg-box warning">⚠️ <b>Dica:</b> Clique com o botão direito no arquivo .ps1 e clique em executar com o power shell.</div>
-          <a href="https://github.com" class="btn" target="_blank">⚙️ Millennium</a>
-          <div class="msg-box info">ℹ️ <b>Dica:</b> Download automático ao clicar.</div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
 
-<footer>© 2025 | 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓</footer>
+    <div id="modal-overlay" onclick="closeModal()">
+        <div id="modal" class="modal" onclick="event.stopPropagation()">
+            <div class="close-btn" onclick="closeModal()" tabindex="0" onkeydown="if(event.key==='Enter') closeModal()">✕</div>
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px;">☕ APOIE O PROJETO</h2>
+            <p style="opacity:.7; font-size: 0.9rem;">Sua contribuição ajuda a manter a infraestrutura ativa.</p>
+            <div class="pix-display" id="pixKey" onclick="copyPix()">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</div>
+            <p style="font-size: 0.65rem; color: var(--secondary); margin-top: 15px; font-weight: bold;">[ TOQUE NO CÓDIGO PARA COPIAR ]</p>
+        </div>
+    </div>
 
-<script>
-  function toggle(el) { const content = el.nextElementSibling; content.classList.toggle('open'); }
-  function openModal() { 
-    const overlay = document.getElementById('modal-overlay');
-    const content = document.getElementById('modal-content');
-    overlay.style.display = 'flex';
-    content.classList.remove('modal-close');
-    content.classList.add('modal-open');
-  }
-  function closeModal() { 
-    const overlay = document.getElementById('modal-overlay');
-    const content = document.getElementById('modal-content');
-    content.classList.remove('modal-open');
-    content.classList.add('modal-close');
-    setTimeout(() => { overlay.style.display = 'none'; }, 300); 
-  }
-</script>
+    <div class="container">
+        <header>
+            <h1>KARMACORE</h1>
+            <span>Micael San</span>
+        </header>
 
+        <div class="search-wrapper">
+            <input type="text" id="appSearch" placeholder="Procurar apps..." onkeyup="filterApps()">
+        </div>
+
+        <div class="folder" id="mainFolder">
+            <div class="folder-header" onclick="toggleFolder(this, event)" tabindex="0" onkeydown="handleKeyToggle(event, this)">
+                CENTRAL DE APPS <span>+</span>
+            </div>
+            <div class="content">
+
+                <div class="folder sub-folder app-item">
+                    <div class="folder-header" onclick="toggleFolder(this, event)" tabindex="0" onkeydown="handleKeyToggle(event, this)">
+                        🪟 WINDOWS <span>+</span>
+                    </div>
+                    <div class="content">
+                        <a href="#" class="btn">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            Karmacore.exe (v1.0)
+                        </a>
+                        <div class="msg-box info">Versão estável para Windows 10 e 11.</div>
+                    </div>
+                </div>
+
+                <div class="folder sub-folder app-item">
+                    <div class="folder-header" onclick="toggleFolder(this, event)" tabindex="0" onkeydown="handleKeyToggle(event, this)">
+                        🤖 ANDROID <span>+</span>
+                    </div>
+                    <div class="content">
+                        <a href="#" class="btn">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            Karmacore.apk (Mobile)
+                        </a>
+                        <div class="msg-box info">Otimizado para usuários em Mato Grosso.</div>
+                    </div>
+                </div>
+
+                <div class="folder sub-folder app-item">
+                    <div class="folder-header" onclick="toggleFolder(this, event)" tabindex="0" onkeydown="handleKeyToggle(event, this)">
+                        🐧 LINUX <span>+</span>
+                    </div>
+                    <div class="content">
+                        <a href="#" class="btn">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            Karmacore_Script.sh
+                        </a>
+                        <div class="msg-box info">Requer permissões chmod +x.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 | 𝕸𝖎𝖈𝖆𝖊𝖑 𝕾𝖆𝖓 <br>
+        Rondonópolis - MT
+    </footer>
+
+    <script>
+        function toggleFolder(header, event){
+            if(event) event.stopPropagation();
+            const content = header.nextElementSibling;
+            const span = header.querySelector('span');
+            header.classList.toggle('active');
+            content.classList.toggle('open');
+            span.textContent = content.classList.contains('open') ? '−' : '+';
+        }
+
+        function handleKeyToggle(event, element) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleFolder(element, event);
+            }
+        }
+
+        // Função de Pesquisa
+        function filterApps() {
+            const input = document.getElementById('appSearch').value.toLowerCase();
+            const apps = document.querySelectorAll('.app-item');
+            const mainFolderContent = document.querySelector('#mainFolder > .content');
+            const mainFolderHeader = document.querySelector('#mainFolder > .folder-header');
+
+            apps.forEach(app => {
+                const text = app.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    app.style.display = "block";
+                } else {
+                    app.style.display = "none";
+                }
+            });
+
+            // Abrir a pasta principal automaticamente ao pesquisar
+            if (input.length > 0) {
+                if (!mainFolderContent.classList.contains('open')) {
+                    toggleFolder(mainFolderHeader);
+                }
+            }
+        }
+
+        function copyPix() {
+            const pix = document.getElementById('pixKey').innerText;
+            navigator.clipboard.writeText(pix).then(() => {
+                alert("Chave PIX copiada! Valeu pelo café, chefe!");
+            });
+        }
+
+        function openModal(){
+            const overlay = document.getElementById("modal-overlay");
+            const modal = document.getElementById("modal");
+            overlay.style.display = "flex";
+            setTimeout(()=>{ modal.classList.add("show") }, 10);
+        }
+
+        function closeModal(){
+            const overlay = document.getElementById("modal-overlay");
+            const modal = document.getElementById("modal");
+            modal.classList.remove("show");
+            setTimeout(()=>{ overlay.style.display = "none" }, 400);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                const overlay = document.getElementById("modal-overlay");
+                if(overlay.style.display === "flex") closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
