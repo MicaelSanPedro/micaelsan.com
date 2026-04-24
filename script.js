@@ -87,25 +87,52 @@ function triggerGlitch(el) {
 
 // ── PIX copy ──
 function copyPix() {
-    const key = document.getElementById('pix-key')?.textContent || '';
+    const pixEl = document.getElementById('pix-key');
     const btn = document.getElementById('copy-btn');
-    if (!key || !btn) return;
+    const copyIcon = document.getElementById('copy-icon');
+    const checkIcon = document.getElementById('check-icon');
+    if (!pixEl || !btn) return;
 
-    navigator.clipboard.writeText(key).then(() => {
-        btn.textContent = '✅';
+    // Use data-pix attribute to ensure ONLY the key is copied
+    const key = pixEl.getAttribute('data-pix') || pixEl.textContent.trim();
+    if (!key) return;
+
+    const showCopied = () => {
+        if (copyIcon) copyIcon.style.display = 'none';
+        if (checkIcon) checkIcon.style.display = 'block';
         btn.style.color = '#00ff88';
-        setTimeout(() => { btn.textContent = '📋'; btn.style.color = ''; }, 2000);
-    }).catch(() => {
+        btn.style.borderColor = 'rgba(0, 255, 136, 0.5)';
+        btn.style.boxShadow = '0 0 16px rgba(0, 255, 136, 0.3)';
+        setTimeout(() => {
+            if (copyIcon) copyIcon.style.display = 'block';
+            if (checkIcon) checkIcon.style.display = 'none';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+            btn.style.boxShadow = '';
+        }, 2200);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(key).then(showCopied).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = key;
+            ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showCopied();
+        });
+    } else {
         const ta = document.createElement('textarea');
         ta.value = key;
-        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        btn.textContent = '✅';
-        setTimeout(() => { btn.textContent = '📋'; }, 2000);
-    });
+        showCopied();
+    }
 }
 
 // ── Modal ──
