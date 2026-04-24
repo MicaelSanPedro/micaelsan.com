@@ -1,0 +1,6 @@
+# Ignore everything except portfolio files
+*
+!.gitignore
+!index.html
+!style.css
+!script.js

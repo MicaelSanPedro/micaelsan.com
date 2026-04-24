@@ -169,23 +169,29 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--hover-overlay);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 10px;
     cursor: pointer;
-    color: var(--text-dim);
+    color: var(--text);
     transition: all 0.3s ease;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    font-size: 0;
 }
 .theme-toggle:hover {
     color: var(--neon-cyan);
-    background: rgba(0, 240, 255, 0.1);
-    border-color: rgba(0, 240, 255, 0.25);
-    transform: scale(1.08);
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    background: rgba(0, 240, 255, 0.12);
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+}
+.theme-toggle:active {
+    transform: scale(0.92);
 }
 .theme-toggle svg {
     transition: all 0.3s ease;
+    pointer-events: none;
 }
 
 /* Burger (hidden on desktop) */
@@ -950,7 +956,7 @@ footer {
 ::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.4); }
 
 /* ═══════════════ LIGHT MODE ═══════════════ */
-body.light {
+html.light {
     --neon-cyan: #0891b2;
     --neon-pink: #db2777;
     --neon-purple: #7c3aed;
@@ -981,13 +987,13 @@ body.light {
 }
 
 /* Light mode: hide matrix rain */
-body.light #matrix { display: none; }
+html.light #matrix { display: none; }
 
 /* Light mode: hide scanline */
-body.light::after { display: none; }
+html.light body::after { display: none; }
 
 /* Light mode: softer ambient glow */
-body.light::before {
+html.light body::before {
     background:
         radial-gradient(ellipse 600px 400px at 15% 20%, rgba(8, 145, 178, 0.05), transparent),
         radial-gradient(ellipse 500px 500px at 85% 80%, rgba(219, 39, 119, 0.04), transparent),
@@ -995,125 +1001,125 @@ body.light::before {
 }
 
 /* Light mode: navbar border */
-body.light #navbar {
+html.light #navbar {
     border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
 /* Light mode: theme toggle + burger */
-body.light .theme-toggle {
+html.light .theme-toggle {
     border-color: rgba(0, 0, 0, 0.08);
 }
-body.light .theme-toggle:hover {
+html.light .theme-toggle:hover {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.2);
 }
-body.light .nav-burger {
+html.light .nav-burger {
     border-color: rgba(0, 0, 0, 0.08);
 }
-body.light .nav-burger span {
+html.light .nav-burger span {
     background: var(--text-dim);
 }
 
 /* Light mode: mobile menu */
-body.light .mobile-menu {
+html.light .mobile-menu {
     border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
 /* Light mode: title glow reduced */
-body.light .title {
+html.light .title {
     filter: drop-shadow(0 0 12px rgba(8, 145, 178, 0.15)) drop-shadow(0 0 24px rgba(219, 39, 119, 0.1));
 }
 
 /* Light mode: avatar border */
-body.light .about-avatar {
+html.light .about-avatar {
     border-color: var(--neon-cyan);
     box-shadow: 0 0 12px rgba(8, 145, 178, 0.2);
 }
-body.light .about-card:hover .about-avatar {
+html.light .about-card:hover .about-avatar {
     box-shadow: 0 0 20px rgba(8, 145, 178, 0.3);
 }
 
 /* Light mode: about card gradient */
-body.light .about-card::before {
+html.light .about-card::before {
     background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(124, 58, 237, 0.03));
 }
 
 /* Light mode: folder header toggle icon */
-body.light .folder-header .toggle-icon {
+html.light .folder-header .toggle-icon {
     background: rgba(0, 0, 0, 0.04);
 }
-body.light .folder-header.active .toggle-icon {
+html.light .folder-header.active .toggle-icon {
     background: rgba(219, 39, 119, 0.1);
 }
 
 /* Light mode: download btn */
-body.light .download-btn {
+html.light .download-btn {
     background: rgba(8, 145, 178, 0.04);
     border-color: rgba(8, 145, 178, 0.15);
 }
-body.light .download-btn:hover {
+html.light .download-btn:hover {
     background: rgba(8, 145, 178, 0.1);
     box-shadow: 0 0 12px rgba(8, 145, 178, 0.15);
 }
 
 /* Light mode: project img overlay */
-body.light .project-img-overlay {
+html.light .project-img-overlay {
     background: linear-gradient(to top, var(--bg-solid) 0%, transparent 50%);
 }
 
 /* Light mode: project tags */
-body.light .project-tag {
+html.light .project-tag {
     background: rgba(124, 58, 237, 0.06);
     border-color: rgba(124, 58, 237, 0.15);
 }
 
 /* Light mode: project link secondary */
-body.light .project-link--secondary {
+html.light .project-link--secondary {
     background: rgba(0, 0, 0, 0.02);
     border-color: rgba(0, 0, 0, 0.08);
 }
-body.light .project-link--secondary:hover {
+html.light .project-link--secondary:hover {
     border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Light mode: nav link active */
-body.light .nav-link.active {
+html.light .nav-link.active {
     background: rgba(8, 145, 178, 0.08);
     box-shadow: 0 0 8px rgba(8, 145, 178, 0.12);
 }
 
 /* Light mode: contact card */
-body.light .contact-card::before {
+html.light .contact-card::before {
     background: linear-gradient(135deg, rgba(219, 39, 119, 0.03), rgba(8, 145, 178, 0.02));
 }
 
 /* Light mode: modal */
-body.light .modal-content {
+html.light .modal-content {
     background: #ffffff;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
-body.light .modal-close {
+html.light .modal-close {
     background: rgba(0, 0, 0, 0.04);
 }
-body.light .modal-close:hover {
+html.light .modal-close:hover {
     background: rgba(219, 39, 119, 0.1);
 }
 
 /* Light mode: pix box */
-body.light .pix-box {
+html.light .pix-box {
     border-color: rgba(8, 145, 178, 0.2);
 }
 
 /* Light mode: scrollbar */
-body.light ::-webkit-scrollbar-track { background: var(--bg-solid); }
-body.light ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
-body.light ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+html.light ::-webkit-scrollbar-track { background: var(--bg-solid); }
+html.light ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
+html.light ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
 
 /* Light mode: coffee button */
-body.light .coffee {
+html.light .coffee {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-body.light .coffee:hover {
+html.light .coffee:hover {
     box-shadow: 0 8px 24px rgba(219, 39, 119, 0.2);
 }
 
