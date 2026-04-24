@@ -18,110 +18,42 @@
 </head>
 <body>
 
-    <canvas id="matrix" style="position:fixed;inset:0;z-index:1;opacity:0.06;pointer-events:none;"></canvas>
+    <canvas id="matrix" style="position:fixed;inset:0;z-index:0;opacity:0.06;pointer-events:none;"></canvas>
 
-    <!-- ══════════ NAVBAR ══════════ -->
+    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#" class="nav-logo" onclick="scrollToTop(); return false;">
+            <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
                 <span class="nav-logo-icon">⚡</span>
                 <span class="nav-logo-text">KARMACORE</span>
             </a>
 
-            <div class="nav-links" id="nav-links">
-                <a href="#about" class="nav-link" data-section="about">
-                    <span class="nav-link-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </span>
-                    Sobre
-                </a>
-                <a href="#downloads" class="nav-link" data-section="downloads">
-                    <span class="nav-link-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </span>
-                    Downloads
-                </a>
-                <a href="#projects" class="nav-link" data-section="projects">
-                    <span class="nav-link-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    </span>
-                    Projetos
-                </a>
-                <a href="#skills" class="nav-link" data-section="skills">
-                    <span class="nav-link-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </span>
-                    Skills
-                </a>
-                <a href="#contact" class="nav-link" data-section="contact">
-                    <span class="nav-link-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </span>
-                    Contato
-                </a>
+            <div class="nav-center">
+                <a href="#about" class="nav-link" data-section="about">Sobre</a>
+                <a href="#downloads" class="nav-link" data-section="downloads">Downloads</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projetos</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contato</a>
             </div>
 
-            <div class="nav-actions">
-                <div class="nav-search" id="nav-search">
-                    <button class="nav-search-toggle" onclick="toggleSearch()" title="Buscar">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-open-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-close-icon" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
-                    <div class="nav-search-box" id="nav-search-box">
-                        <span class="nav-search-icon-box">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        </span>
-                        <input type="text" id="search" placeholder="Buscar no site..." autocomplete="off">
-                        <kbd class="nav-search-kbd">ESC</kbd>
-                    </div>
-                </div>
-
-                <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" title="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile menu dropdown -->
-        <div class="nav-mobile" id="nav-mobile">
-            <a href="#about" class="nav-mobile-link" onclick="closeMenu()">
-                <span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </span>
-                Sobre Mim
-            </a>
-            <a href="#downloads" class="nav-mobile-link" onclick="closeMenu()">
-                <span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </span>
-                Downloads
-            </a>
-            <a href="#projects" class="nav-mobile-link" onclick="closeMenu()">
-                <span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                </span>
-                Projetos
-            </a>
-            <a href="#skills" class="nav-mobile-link" onclick="closeMenu()">
-                <span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </span>
-                Skills
-            </a>
-            <a href="#contact" class="nav-mobile-link" onclick="closeMenu()">
-                <span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </span>
-                Contato
-            </a>
+            <button class="nav-burger" id="burger" onclick="toggleBurger()">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#about" class="mm-link" onclick="closeBurger()">Sobre Mim</a>
+        <a href="#downloads" class="mm-link" onclick="closeBurger()">Downloads</a>
+        <a href="#projects" class="mm-link" onclick="closeBurger()">Projetos</a>
+        <a href="#skills" class="mm-link" onclick="closeBurger()">Skills</a>
+        <a href="#contact" class="mm-link" onclick="closeBurger()">Contato</a>
+    </div>
+
     <div class="container">
 
-        <!-- ══════════ HERO ══════════ -->
+        <!-- HERO -->
         <header class="hero">
             <h1 class="title" onclick="triggerGlitch(this)">KARMACORE</h1>
             <p class="subtitle">Micael San &bull; Developer &bull; 2026</p>
@@ -129,7 +61,7 @@
 
         <div class="divider"></div>
 
-        <!-- ══════════ ABOUT ══════════ -->
+        <!-- ABOUT -->
         <section id="about" class="section">
             <div class="section-label">// 01 &mdash; sobre mim</div>
             <div class="about-card">
@@ -160,9 +92,14 @@
 
         <div class="divider"></div>
 
-        <!-- ══════════ DOWNLOADS ══════════ -->
+        <!-- DOWNLOADS -->
         <section id="downloads" class="section">
             <div class="section-label">// 02 &mdash; central de downloads</div>
+
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search" placeholder="Procurar ferramentas ou apps..." autocomplete="off">
+            </div>
 
             <div class="folder" id="main-folder">
                 <div class="folder-header" onclick="toggleFolder(this)">
@@ -171,7 +108,6 @@
                 </div>
                 <div class="content" id="main-content">
 
-                    <!-- WINDOWS -->
                     <div class="folder">
                         <div class="folder-header" onclick="toggleFolder(this)">
                             🪟 WINDOWS
@@ -188,7 +124,6 @@
                         </div>
                     </div>
 
-                    <!-- ANDROID -->
                     <div class="folder">
                         <div class="folder-header" onclick="toggleFolder(this)">
                             🤖 ANDROID
@@ -205,7 +140,6 @@
                         </div>
                     </div>
 
-                    <!-- NO RESULTS -->
                     <div id="no-results">
                         Nenhum resultado encontrado para "<span id="search-term"></span>"
                     </div>
@@ -216,12 +150,10 @@
 
         <div class="divider"></div>
 
-        <!-- ══════════ PROJECTS ══════════ -->
+        <!-- PROJECTS -->
         <section id="projects" class="section">
             <div class="section-label">// 03 &mdash; projetos</div>
             <div class="projects-grid">
-
-                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=360&fit=crop&q=80" alt="Mundo Aprender" class="project-img">
@@ -251,8 +183,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&h=360&fit=crop&q=80" alt="Karmacore" class="project-img">
@@ -278,13 +208,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <div class="divider"></div>
 
-        <!-- ══════════ SKILLS ══════════ -->
+        <!-- SKILLS -->
         <section id="skills" class="section">
             <div class="section-label">// 04 &mdash; habilidades</div>
             <div class="skills-grid">
@@ -305,7 +234,7 @@
 
         <div class="divider"></div>
 
-        <!-- ══════════ CONTACT ══════════ -->
+        <!-- CONTACT -->
         <section id="contact" class="section">
             <div class="section-label">// 05 &mdash; contato</div>
             <div class="contact-card">
@@ -346,7 +275,7 @@
 
     </div>
 
-    <!-- Coffee support button -->
+    <!-- Coffee button -->
     <div class="coffee" onclick="openModal()">☕</div>
 
     <!-- Support modal -->
