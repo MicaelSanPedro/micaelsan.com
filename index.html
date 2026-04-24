@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KARMACORE | Micael San</title>
-    <meta name="description" content="Portfólio de Micael San — Desenvolvedor, criador de ferramentas e projetos.">
+    <meta name="description" content="Portfolio de Micael San — Desenvolvedor, criador de ferramentas e projetos.">
     <meta property="og:title" content="KARMACORE | Micael San">
     <meta property="og:description" content="Desenvolvedor, criador de ferramentas e projetos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://micaelsan.com">
-    <meta name="theme-color" content="#06060a">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    <link rel="stylesheet" href="style.css?v=3">
+    <meta name="theme-color" content="#050507">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>K</text></svg>">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
-    <!-- ANIMATED BACKGROUND ORBS -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Mesh gradient background -->
+    <div class="mesh-bg">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+    <div class="grain"></div>
 
     <!-- NAVBAR -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-                <span class="nav-logo-icon">⚡</span>
-                <span class="nav-logo-text">KARMACORE</span>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+                <div class="logo-mark">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <span class="logo-word">KARMACORE</span>
             </a>
 
-            <div class="nav-center">
+            <div class="nav-links">
                 <a href="#about" class="nav-link" data-section="about">Sobre</a>
                 <a href="#downloads" class="nav-link" data-section="downloads">Downloads</a>
                 <a href="#projects" class="nav-link" data-section="projects">Projetos</a>
@@ -37,20 +44,20 @@
                 <a href="#contact" class="nav-link" data-section="contact">Contato</a>
             </div>
 
-            <div class="nav-right">
-                <button class="theme-toggle" id="theme-toggle" title="Alternar tema" onclick="toggleTheme()">
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <div class="nav-actions">
+                <button class="btn-icon" title="Alternar tema" onclick="toggleTheme()">
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 </button>
-                <button class="nav-burger" id="burger" onclick="toggleBurger()">
+                <button class="burger" id="burger" onclick="toggleBurger()">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="mobile-menu">
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="mobile-nav">
         <a href="#about" class="mm-link" onclick="closeBurger()">Sobre</a>
         <a href="#downloads" class="mm-link" onclick="closeBurger()">Downloads</a>
         <a href="#projects" class="mm-link" onclick="closeBurger()">Projetos</a>
@@ -58,211 +65,206 @@
         <a href="#contact" class="mm-link" onclick="closeBurger()">Contato</a>
     </div>
 
-    <div class="container">
+    <main>
 
-        <!-- HERO -->
-        <header class="hero">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-tag">
+                <span class="dot"></span>
                 Disponivel para projetos
             </div>
-            <h1 class="title">KARMA<span class="title-accent">CORE</span></h1>
-            <p class="subtitle">Micael San &bull; Developer &bull; 2026</p>
-            <div class="hero-cta">
-                <a href="#projects" class="cta-primary">
+            <h1 class="hero-title">
+                KARMA
+                <span class="line-2">CORE</span>
+            </h1>
+            <p class="hero-sub">Desenvolvedor criando solucoes que quebram o convencional. Performance, design e funcionalidade real.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    Ver Projetos
+                    Projetos
                 </a>
-                <a href="#contact" class="cta-secondary">Contato</a>
+                <a href="#contact" class="btn btn-ghost">Contato</a>
             </div>
-        </header>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
 
-        <div class="divider"></div>
-
-        <!-- ABOUT -->
-        <section id="about" class="section">
-            <div class="section-label">Sobre mim</div>
-            <div class="about-card">
-                <img src="https://avatars.githubusercontent.com/u/167715159?v=4" alt="Micael San" class="about-avatar">
-                <div class="about-name">Micael San</div>
-                <div class="about-role">Developer &bull; Creator</div>
-                <p class="about-bio">
-                    Desenvolvedor apaixonado por criar soluções inovadoras e interfaces que fogem do comum.
-                    Foco em projetos com funcionalidade real,
-                    sempre explorando novas tecnologias e quebrando limites.
-                </p>
-                <div class="about-stats">
-                    <div class="about-stat">
-                        <div class="about-stat-value">3+</div>
-                        <div class="about-stat-label">Projetos</div>
+        <!-- ===== ABOUT ===== -->
+        <section class="section reveal" id="about">
+            <div class="section-head">
+                <span class="section-num">01</span>
+                <span class="section-title">Sobre</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="about-grid">
+                <div class="about-main reveal-card">
+                    <img src="https://avatars.githubusercontent.com/u/167715159?v=4" alt="Micael San" class="about-photo">
+                    <div class="about-info">
+                        <h2>Micael San</h2>
+                        <div class="role">Developer &bull; Creator</div>
+                        <p>Desenvolvedor apaixonado por criar solucoes inovadoras e interfaces que fogem do comum. Foco em projetos com funcionalidade real, sempre explorando novas tecnologias e quebrando limites.</p>
                     </div>
-                    <div class="about-stat">
-                        <div class="about-stat-value">5+</div>
-                        <div class="about-stat-label">Techs</div>
-                    </div>
-                    <div class="about-stat">
-                        <div class="about-stat-value">&infin;</div>
-                        <div class="about-stat-label">Cafe</div>
-                    </div>
+                </div>
+                <div class="stat-card reveal-card">
+                    <div class="stat-val" data-count="3">0</div>
+                    <div class="stat-label">Projetos</div>
+                </div>
+                <div class="stat-card reveal-card">
+                    <div class="stat-val" data-count="5">0</div>
+                    <div class="stat-label">Tecnologias</div>
                 </div>
             </div>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- DOWNLOADS -->
-        <section id="downloads" class="section">
-            <div class="section-label">Downloads</div>
-            <a href="downloads.html" class="dl-card" id="dl-card">
-                <div class="dl-card-glow"></div>
-                <div class="dl-card-body">
-                    <div class="dl-card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <!-- ===== DOWNLOADS ===== -->
+        <section class="section reveal" id="downloads">
+            <div class="section-head">
+                <span class="section-num">02</span>
+                <span class="section-title">Downloads</span>
+                <span class="section-line"></span>
+            </div>
+            <a href="downloads.html" class="dl-banner reveal-card">
+                <div class="dl-inner">
+                    <div class="dl-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     </div>
-                    <div class="dl-card-text">
-                        <div class="dl-card-title">Central de Downloads</div>
-                        <div class="dl-card-sub">Windows &bull; Android &bull; v2.4.1</div>
+                    <div class="dl-text">
+                        <h3>Central de Downloads</h3>
+                        <p>Windows &bull; Android &bull; v2.4.1</p>
                     </div>
-                    <div class="dl-card-go">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    <div class="dl-arrow">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                 </div>
             </a>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- PROJECTS -->
-        <section id="projects" class="section">
-            <div class="section-label">Projetos</div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&h=360&fit=crop&q=80" alt="Karmacore" class="project-img">
-                        <div class="project-img-overlay"></div>
+        <!-- ===== PROJECTS ===== -->
+        <section class="section reveal" id="projects">
+            <div class="section-head">
+                <span class="section-num">03</span>
+                <span class="section-title">Projetos</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="project-card reveal-card">
+                <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop&q=80" alt="Karmacore">
+                </div>
+                <div class="project-content">
+                    <h3>Karmacore</h3>
+                    <p>Suite de ferramentas e utilitarios de sistema. Aplicativo multiplataforma para Windows e Android com foco em performance e seguranca.</p>
+                    <div class="tags">
+                        <span class="tag">Desktop</span>
+                        <span class="tag">Android</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Kotlin</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-title">Karmacore</div>
-                        <p class="project-desc">
-                            Suite de ferramentas e utilitarios de sistema. Aplicativo multiplataforma para Windows e Android
-                            com foco em performance e seguranca.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Desktop</span>
-                            <span class="project-tag">Android</span>
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">Kotlin</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="downloads.html" class="project-link project-link--primary">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Download
-                            </a>
-                        </div>
+                    <div class="project-actions">
+                        <a href="downloads.html" class="btn btn-primary">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section">
-            <div class="section-label">Habilidades</div>
-            <div class="skills-grid">
-                <div class="skill-tag"><span class="skill-icon">⚡</span>JavaScript</div>
-                <div class="skill-tag"><span class="skill-icon">📘</span>TypeScript</div>
-                <div class="skill-tag"><span class="skill-icon">⚛️</span>React</div>
-                <div class="skill-tag"><span class="skill-icon">▲</span>Next.js</div>
-                <div class="skill-tag"><span class="skill-icon">🐍</span>Python</div>
-                <div class="skill-tag"><span class="skill-icon">🎨</span>CSS / Tailwind</div>
-                <div class="skill-tag"><span class="skill-icon">🗄️</span>SQL / Prisma</div>
-                <div class="skill-tag"><span class="skill-icon">🤖</span>Kotlin</div>
-                <div class="skill-tag"><span class="skill-icon">🔧</span>C++</div>
-                <div class="skill-tag"><span class="skill-icon">🐙</span>Git</div>
-                <div class="skill-tag"><span class="skill-icon">🐧</span>Linux</div>
-                <div class="skill-tag"><span class="skill-icon">🚀</span>APIs</div>
+        <!-- ===== SKILLS ===== -->
+        <section class="section reveal" id="skills">
+            <div class="section-head">
+                <span class="section-num">04</span>
+                <span class="section-title">Habilidades</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="skills-scroll">
+                <div class="skill"><span class="sk-icon">⚡</span><span class="sk-name">JavaScript</span></div>
+                <div class="skill"><span class="sk-icon">📘</span><span class="sk-name">TypeScript</span></div>
+                <div class="skill"><span class="sk-icon">⚛️</span><span class="sk-name">React</span></div>
+                <div class="skill"><span class="sk-icon">▲</span><span class="sk-name">Next.js</span></div>
+                <div class="skill"><span class="sk-icon">🐍</span><span class="sk-name">Python</span></div>
+                <div class="skill"><span class="sk-icon">🎨</span><span class="sk-name">CSS</span></div>
+                <div class="skill"><span class="sk-icon">🗄️</span><span class="sk-name">SQL</span></div>
+                <div class="skill"><span class="sk-icon">🤖</span><span class="sk-name">Kotlin</span></div>
+                <div class="skill"><span class="sk-icon">🔧</span><span class="sk-name">C++</span></div>
+                <div class="skill"><span class="sk-icon">🐙</span><span class="sk-name">Git</span></div>
+                <div class="skill"><span class="sk-icon">🐧</span><span class="sk-name">Linux</span></div>
+                <div class="skill"><span class="sk-icon">🚀</span><span class="sk-name">APIs</span></div>
             </div>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section">
-            <div class="section-label">Contato</div>
-            <div class="contact-card">
-                <h3>Vamos conversar?</h3>
-                <p>Disponivel para projetos, parcerias e ideias malucas.</p>
-                <div class="contact-links">
-                    <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener" class="contact-link">
-                        <span class="contact-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        </span>
-                        <div>
-                            <span class="contact-label">GitHub</span>
-                            <span class="contact-sublabel">@MicaelSanPedro</span>
-                        </div>
-                        <span class="contact-arrow">&rarr;</span>
-                    </a>
-                    <a href="mailto:sanpedromicael@gmail.com" class="contact-link">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <span class="contact-label">Email</span>
-                            <span class="contact-sublabel">sanpedromicael@gmail.com</span>
-                        </div>
-                        <span class="contact-arrow">&rarr;</span>
-                    </a>
-                    <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="contact-link">
-                        <span class="contact-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        </span>
-                        <div>
-                            <span class="contact-label">WhatsApp</span>
-                            <span class="contact-sublabel">(66) 98444-7849</span>
-                        </div>
-                        <span class="contact-arrow">&rarr;</span>
-                    </a>
-                </div>
+        <!-- ===== CONTACT ===== -->
+        <section class="section reveal" id="contact">
+            <div class="section-head">
+                <span class="section-num">05</span>
+                <span class="section-title">Contato</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="contact-grid">
+                <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener" class="contact-row reveal-card">
+                    <span class="cr-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </span>
+                    <div class="cr-text">
+                        <div class="cr-label">GitHub</div>
+                        <div class="cr-sub">@MicaelSanPedro</div>
+                    </div>
+                    <span class="cr-arrow">&rarr;</span>
+                </a>
+                <a href="mailto:sanpedromicael@gmail.com" class="contact-row reveal-card">
+                    <span class="cr-icon">📧</span>
+                    <div class="cr-text">
+                        <div class="cr-label">Email</div>
+                        <div class="cr-sub">sanpedromicael@gmail.com</div>
+                    </div>
+                    <span class="cr-arrow">&rarr;</span>
+                </a>
+                <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="contact-row reveal-card">
+                    <span class="cr-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </span>
+                    <div class="cr-text">
+                        <div class="cr-label">WhatsApp</div>
+                        <div class="cr-sub">(66) 98444-7849</div>
+                    </div>
+                    <span class="cr-arrow">&rarr;</span>
+                </a>
             </div>
         </section>
 
-    </div>
+    </main>
 
-    <!-- Coffee button -->
-    <div class="coffee" onclick="openModal()">☕</div>
+    <!-- Coffee FAB -->
+    <div class="coffee-fab" onclick="openModal()">☕</div>
 
-    <!-- Support modal -->
-    <div id="modal" onclick="if(event.target===this) closeModal()">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&#10005;</span>
-            <div class="modal-title">APOIE O PROJETO</div>
-            <p class="modal-subtitle">Qualquer valor faz diferenca &#128293;</p>
-            <div class="pix-box">
-                <span id="pix-key" data-pix="1ad6a146-8d7e-4521-a96a-fde7ccd602ac">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</span>
-                <button id="copy-btn" onclick="copyPix()" title="Copiar chave PIX">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="copy-icon">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" id="check-icon" style="display:none">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-box" id="modal-box">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3>Apoie o Projeto</h3>
+            <p class="modal-sub">Qualquer valor faz diferenca</p>
+            <div class="pix-card">
+                <span class="pix-key" id="pix-key" data-pix="1ad6a146-8d7e-4521-a96a-fde7ccd602ac">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</span>
+                <button class="copy-btn" onclick="copyPix()" title="Copiar chave PIX">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" id="check-icon" style="display:none"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </button>
             </div>
-            <p class="pix-hint" onclick="copyPix()">Toque na chave ou no botao para copiar</p>
+            <p class="modal-hint" onclick="copyPix()">Toque para copiar a chave PIX</p>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-            <a href="mailto:sanpedromicael@gmail.com" class="footer-link">Email</a>
-            <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
+    <footer class="site-footer">
+        <div class="footer-row">
+            <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:sanpedromicael@gmail.com">Email</a>
+            <a href="https://wa.me/5566984447849" target="_blank" rel="noopener">WhatsApp</a>
         </div>
-        <p class="footer-copy">&copy; 2026 &mdash; Rondonopolis, MT &bull; Feito com cafe</p>
+        <p class="copy">&copy; 2026 &mdash; Rondonopolis, MT</p>
     </footer>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
