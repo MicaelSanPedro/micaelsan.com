@@ -38,6 +38,71 @@
     setInterval(draw, 50);
 })();
 
+// ── Navbar scroll effect ──
+(function initNavbarScroll() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 30) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    }, { passive: true });
+})();
+
+// ── Mobile menu toggle ──
+let menuOpen = false;
+function toggleMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobile = document.getElementById('nav-mobile');
+    if (!hamburger || !mobile) return;
+
+    menuOpen = !menuOpen;
+    hamburger.classList.toggle('active', menuOpen);
+    mobile.classList.toggle('open', menuOpen);
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobile = document.getElementById('nav-mobile');
+    if (!hamburger || !mobile) return;
+
+    menuOpen = false;
+    hamburger.classList.remove('active');
+    mobile.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// ── Search toggle ──
+let searchOpen = false;
+function toggleSearch() {
+    const searchContainer = document.getElementById('nav-search');
+    const searchBox = document.getElementById('nav-search-box');
+    const input = document.getElementById('search');
+    if (!searchContainer) return;
+
+    searchOpen = !searchOpen;
+    searchContainer.classList.toggle('active', searchOpen);
+
+    const openIcon = searchContainer.querySelector('.search-open-icon');
+    const closeIcon = searchContainer.querySelector('.search-close-icon');
+    if (openIcon && closeIcon) {
+        openIcon.style.display = searchOpen ? 'none' : '';
+        closeIcon.style.display = searchOpen ? '' : 'none';
+    }
+
+    if (searchOpen && input) {
+        setTimeout(() => input.focus(), 150);
+    }
+}
+
 // ── Search / Filter ──
 (function initSearch() {
     const input = document.getElementById('search');
@@ -45,6 +110,8 @@
 
     input.addEventListener('input', function() {
         const term = this.value.toLowerCase().trim();
+
+        // Filter download folders
         const subFolders = document.querySelectorAll('#main-content > .folder');
         let hasResults = false;
 
@@ -67,6 +134,11 @@
         }
     });
 })();
+
+// ── Scroll to top ──
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // ── Folder toggle ──
 function toggleFolder(header) {
@@ -93,7 +165,6 @@ function copyPix() {
     const checkIcon = document.getElementById('check-icon');
     if (!pixEl || !btn) return;
 
-    // Use data-pix attribute to ensure ONLY the key is copied
     const key = pixEl.getAttribute('data-pix') || pixEl.textContent.trim();
     if (!key) return;
 
@@ -155,28 +226,67 @@ function closeModal() {
 
 // ── Keyboard shortcuts ──
 document.addEventListener('keydown', e => {
+    // ESC to close modal, search, or mobile menu
     if (e.key === 'Escape') {
         const modal = document.getElementById('modal');
-        if (modal?.style.display === 'flex') closeModal();
+        if (modal?.style.display === 'flex') {
+            closeModal();
+            return;
+        }
+        if (searchOpen) {
+            toggleSearch();
+            return;
+        }
+        if (menuOpen) {
+            closeMenu();
+            return;
+        }
+    }
+
+    // Ctrl/Cmd + K to open search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleSearch();
     }
 });
 
 // ── Active nav on scroll ──
 (function initActiveNav() {
     const sections = document.querySelectorAll('.section[id]');
-    const navDots = document.querySelectorAll('.nav-dot');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    const mobileLinks = document.querySelectorAll('.nav-mobile-link');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navDots.forEach(dot => dot.classList.remove('active'));
-                const activeDot = document.querySelector(`.nav-dot[href="#${entry.target.id}"]`);
-                if (activeDot) activeDot.classList.add('active');
+                const id = entry.target.id;
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-section') === id);
+                });
+                mobileLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.classList.toggle('active', href === `#${id}`);
+                });
             }
         });
     }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
 
     sections.forEach(section => observer.observe(section));
+})();
+
+// ── Close menu on resize to desktop ──
+(function initResizeWatcher() {
+    let prevWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+        const currentWidth = window.innerWidth;
+        // Went from mobile to desktop
+        if (prevWidth <= 768 && currentWidth > 768) {
+            closeMenu();
+            if (searchOpen) toggleSearch();
+        }
+        prevWidth = currentWidth;
+    }, { passive: true });
 })();
 
 // ── On load ──
