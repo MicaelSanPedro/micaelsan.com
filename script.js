@@ -240,6 +240,50 @@ document.addEventListener('keydown', function(e) {
     }
 })();
 
+// ── Liquid Glass Tilt Effect ──
+(function() {
+    var cards = document.querySelectorAll('.about-card, .project-card, .contact-card, .folder');
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('mousemove', function(e) {
+            var rect = this.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            var rotateX = ((y - centerY) / centerY) * -3;
+            var rotateY = ((x - centerX) / centerX) * 3;
+            this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-2px)';
+        });
+        cards[i].addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    }
+})();
+
+// ── Smooth Scroll Reveal ──
+(function() {
+    var sections = document.querySelectorAll('.section, .hero');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.opacity = '0';
+        sections[i].style.transform = 'translateY(30px)';
+        sections[i].style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+                entries[i].target.style.opacity = '1';
+                entries[i].target.style.transform = 'translateY(0)';
+                observer.unobserve(entries[i].target);
+            }
+        }
+    }, { threshold: 0.1 });
+
+    for (var i = 0; i < sections.length; i++) {
+        observer.observe(sections[i]);
+    }
+})();
+
 // ── On load ──
 document.addEventListener('DOMContentLoaded', function() {
     var mainHeader = document.querySelector('#main-folder .folder-header');
