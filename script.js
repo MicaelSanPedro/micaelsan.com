@@ -2,6 +2,38 @@
    KARMACORE | Micael San - Scripts
    ═══════════════════════════════════════════════════ */
 
+// ── Theme toggle ──
+(function() {
+    var saved = localStorage.getItem('karmacore-theme');
+    if (saved === 'light') {
+        document.body.classList.add('light');
+    }
+})();
+
+function toggleTheme() {
+    var body = document.body;
+    var isLight = body.classList.toggle('light');
+    localStorage.setItem('karmacore-theme', isLight ? 'light' : 'dark');
+
+    var moonIcon = document.querySelector('.icon-moon');
+    var sunIcon = document.querySelector('.icon-sun');
+    if (moonIcon && sunIcon) {
+        moonIcon.style.display = isLight ? 'none' : 'block';
+        sunIcon.style.display = isLight ? 'block' : 'none';
+    }
+}
+
+// Fix icon visibility on load
+document.addEventListener('DOMContentLoaded', function() {
+    var isLight = document.body.classList.contains('light');
+    var moonIcon = document.querySelector('.icon-moon');
+    var sunIcon = document.querySelector('.icon-sun');
+    if (moonIcon && sunIcon) {
+        moonIcon.style.display = isLight ? 'none' : 'block';
+        sunIcon.style.display = isLight ? 'block' : 'none';
+    }
+});
+
 // ── Matrix Rain ──
 (function() {
     var canvas = document.getElementById('matrix');
