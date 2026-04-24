@@ -9,24 +9,6 @@
     if (saved === 'light') {
         document.documentElement.classList.add('light');
     }
-
-    // Script runs at bottom of body — no need for DOMContentLoaded
-    var btn = document.getElementById('theme-toggle');
-    if (btn) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var html = document.documentElement;
-            var isLight = html.classList.toggle('light');
-            try { localStorage.setItem('karmacore-theme', isLight ? 'light' : 'dark'); } catch(e) {}
-
-            var moonIcon = btn.querySelector('.icon-moon');
-            var sunIcon = btn.querySelector('.icon-sun');
-            if (moonIcon) moonIcon.style.display = isLight ? 'none' : '';
-            if (sunIcon) sunIcon.style.display = isLight ? '' : 'none';
-        });
-    }
-
     // Fix icon visibility on load
     var isLight = document.documentElement.classList.contains('light');
     var moonIcon = document.querySelector('.icon-moon');
@@ -34,6 +16,17 @@
     if (moonIcon) moonIcon.style.display = isLight ? 'none' : '';
     if (sunIcon) sunIcon.style.display = isLight ? '' : 'none';
 })();
+
+function toggleTheme() {
+    var html = document.documentElement;
+    var isLight = html.classList.toggle('light');
+    try { localStorage.setItem('karmacore-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+
+    var moonIcon = document.querySelector('.icon-moon');
+    var sunIcon = document.querySelector('.icon-sun');
+    if (moonIcon) moonIcon.style.display = isLight ? 'none' : '';
+    if (sunIcon) sunIcon.style.display = isLight ? '' : 'none';
+}
 
 // ── Matrix Rain ──
 (function() {
