@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   KARMACORE | Micael San - Scripts
+   KARMACORE | Micael San - Scripts v3
    ═══════════════════════════════════════════════════ */
 
 // ── Theme toggle ──
@@ -48,6 +48,48 @@ function closeBurger() {
     if (burger) burger.classList.remove('open');
 }
 
+// ── Orb parallax on mouse move ──
+(function() {
+    var orbs = document.querySelectorAll('.orb');
+    if (!orbs.length) return;
+
+    var ticking = false;
+    document.addEventListener('mousemove', function(e) {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+            var cx = (e.clientX / window.innerWidth - 0.5) * 2;
+            var cy = (e.clientY / window.innerHeight - 0.5) * 2;
+
+            orbs[0].style.transform = 'translate(' + (cx * 20) + 'px, ' + (cy * 15) + 'px)';
+            orbs[1].style.transform = 'translate(' + (cx * -15) + 'px, ' + (cy * -20) + 'px)';
+            orbs[2].style.transform = 'translate(' + (cx * 25) + 'px, ' + (cy * -10) + 'px)';
+            if (orbs[3]) orbs[3].style.transform = 'translate(' + (cx * -18) + 'px, ' + (cy * 12) + 'px)';
+            ticking = false;
+        });
+    });
+})();
+
+// ── 3D Tilt on glass cards ──
+(function() {
+    var cards = document.querySelectorAll('.about-card, .project-card, .contact-card, .dl-card');
+    for (var i = 0; i < cards.length; i++) {
+        (function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = (e.clientX - rect.left) / rect.width;
+                var y = (e.clientY - rect.top) / rect.height;
+                var tiltX = (y - 0.5) * 6;
+                var tiltY = (x - 0.5) * -6;
+                card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        })(cards[i]);
+    }
+})();
+
 // ── Search / Filter ──
 (function() {
     var input = document.getElementById('search');
@@ -82,7 +124,7 @@ function toggleFolder(header) {
     header.classList.toggle('active');
     content.classList.toggle('open');
     var icon = header.querySelector('.toggle-icon');
-    if (icon) icon.textContent = content.classList.contains('open') ? '−' : '+';
+    if (icon) icon.textContent = content.classList.contains('open') ? '\u2212' : '+';
 }
 
 // ── PIX copy ──
@@ -97,8 +139,8 @@ function copyPix() {
     var done = function() {
         if (copyIcon) copyIcon.style.display = 'none';
         if (checkIcon) checkIcon.style.display = 'block';
-        btn.style.color = '#10b981';
-        btn.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        btn.style.color = '#34d399';
+        btn.style.borderColor = 'rgba(52, 211, 153, 0.3)';
         setTimeout(function() {
             if (copyIcon) copyIcon.style.display = 'block';
             if (checkIcon) checkIcon.style.display = 'none';
@@ -108,29 +150,21 @@ function copyPix() {
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(key).then(done).catch(function() {
-            var ta = document.createElement('textarea');
-            ta.value = key;
-            ta.style.position = 'fixed';
-            ta.style.left = '-9999px';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            done();
+            fallbackCopy(key, done);
         });
     } else {
-        var ta = document.createElement('textarea');
-        ta.value = key;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        done();
+        fallbackCopy(key, done);
     }
+}
+function fallbackCopy(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    done();
 }
 
 // ── Modal ──
@@ -188,23 +222,29 @@ document.addEventListener('keydown', function(e) {
     }
 })();
 
-// ── Scroll reveal ──
+// ── Scroll reveal with stagger ──
 (function() {
     var els = document.querySelectorAll('.section, .hero');
     for (var i = 0; i < els.length; i++) {
         els[i].style.opacity = '0';
-        els[i].style.transform = 'translateY(24px)';
-        els[i].style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+        els[i].style.transform = 'translateY(30px)';
+        els[i].style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
     }
+    var idx = 0;
     var obs = new IntersectionObserver(function(entries) {
         for (var i = 0; i < entries.length; i++) {
             if (entries[i].isIntersecting) {
-                entries[i].target.style.opacity = '1';
-                entries[i].target.style.transform = 'translateY(0)';
-                obs.unobserve(entries[i].target);
+                var el = entries[i].target;
+                var delay = idx * 80;
+                setTimeout(function() {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+                idx++;
+                obs.unobserve(el);
             }
         }
-    }, { threshold: 0.08 });
+    }, { threshold: 0.05 });
     for (var i = 0; i < els.length; i++) {
         obs.observe(els[i]);
     }
@@ -218,6 +258,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var mainContent = document.getElementById('main-content');
         if (mainContent) mainContent.classList.add('open');
         var icon = mainHeader.querySelector('.toggle-icon');
-        if (icon) icon.textContent = '−';
+        if (icon) icon.textContent = '\u2212';
     }
 });

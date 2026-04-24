@@ -9,14 +9,17 @@
     <meta property="og:description" content="Desenvolvedor, criador de ferramentas e projetos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://micaelsan.com">
-    <meta name="theme-color" content="#09090b">
+    <meta name="theme-color" content="#06060a">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
+
+    <!-- ANIMATED BACKGROUND ORBS -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
 
     <!-- NAVBAR -->
     <nav id="navbar">
@@ -59,8 +62,19 @@
 
         <!-- HERO -->
         <header class="hero">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Disponivel para projetos
+            </div>
             <h1 class="title">KARMA<span class="title-accent">CORE</span></h1>
             <p class="subtitle">Micael San &bull; Developer &bull; 2026</p>
+            <div class="hero-cta">
+                <a href="#projects" class="cta-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    Ver Projetos
+                </a>
+                <a href="#contact" class="cta-secondary">Contato</a>
+            </div>
         </header>
 
         <div class="divider"></div>
@@ -87,8 +101,8 @@
                         <div class="about-stat-label">Techs</div>
                     </div>
                     <div class="about-stat">
-                        <div class="about-stat-value">∞</div>
-                        <div class="about-stat-label">Café</div>
+                        <div class="about-stat-value">&infin;</div>
+                        <div class="about-stat-label">Cafe</div>
                     </div>
                 </div>
             </div>
@@ -110,7 +124,7 @@
                         <div class="dl-card-sub">Windows &bull; Android &bull; v2.4.1</div>
                     </div>
                     <div class="dl-card-go">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                 </div>
             </a>
@@ -130,8 +144,8 @@
                     <div class="project-body">
                         <div class="project-title">Karmacore</div>
                         <p class="project-desc">
-                            Suite de ferramentas e utilitários de sistema. Aplicativo multiplataforma para Windows e Android
-                            com foco em performance e segurança.
+                            Suite de ferramentas e utilitarios de sistema. Aplicativo multiplataforma para Windows e Android
+                            com foco em performance e seguranca.
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">Desktop</span>
@@ -141,7 +155,7 @@
                         </div>
                         <div class="project-links">
                             <a href="downloads.html" class="project-link project-link--primary">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Download
                             </a>
                         </div>
@@ -178,7 +192,7 @@
             <div class="section-label">Contato</div>
             <div class="contact-card">
                 <h3>Vamos conversar?</h3>
-                <p>Disponível para projetos, parcerias e ideias malucas.</p>
+                <p>Disponivel para projetos, parcerias e ideias malucas.</p>
                 <div class="contact-links">
                     <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener" class="contact-link">
                         <span class="contact-icon">
@@ -188,7 +202,7 @@
                             <span class="contact-label">GitHub</span>
                             <span class="contact-sublabel">@MicaelSanPedro</span>
                         </div>
-                        <span class="contact-arrow">→</span>
+                        <span class="contact-arrow">&rarr;</span>
                     </a>
                     <a href="mailto:sanpedromicael@gmail.com" class="contact-link">
                         <span class="contact-icon">📧</span>
@@ -196,7 +210,7 @@
                             <span class="contact-label">Email</span>
                             <span class="contact-sublabel">sanpedromicael@gmail.com</span>
                         </div>
-                        <span class="contact-arrow">→</span>
+                        <span class="contact-arrow">&rarr;</span>
                     </a>
                     <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="contact-link">
                         <span class="contact-icon">
@@ -206,7 +220,7 @@
                             <span class="contact-label">WhatsApp</span>
                             <span class="contact-sublabel">(66) 98444-7849</span>
                         </div>
-                        <span class="contact-arrow">→</span>
+                        <span class="contact-arrow">&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -220,9 +234,9 @@
     <!-- Support modal -->
     <div id="modal" onclick="if(event.target===this) closeModal()">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">✕</span>
+            <span class="modal-close" onclick="closeModal()">&#10005;</span>
             <div class="modal-title">APOIE O PROJETO</div>
-            <p class="modal-subtitle">Qualquer valor faz diferença 🔥</p>
+            <p class="modal-subtitle">Qualquer valor faz diferenca &#128293;</p>
             <div class="pix-box">
                 <span id="pix-key" data-pix="1ad6a146-8d7e-4521-a96a-fde7ccd602ac">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</span>
                 <button id="copy-btn" onclick="copyPix()" title="Copiar chave PIX">
@@ -235,7 +249,7 @@
                     </svg>
                 </button>
             </div>
-            <p class="pix-hint" onclick="copyPix()">Toque na chave ou no botão para copiar</p>
+            <p class="pix-hint" onclick="copyPix()">Toque na chave ou no botao para copiar</p>
         </div>
     </div>
 
@@ -246,9 +260,9 @@
             <a href="mailto:sanpedromicael@gmail.com" class="footer-link">Email</a>
             <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
         </div>
-        <p class="footer-copy">&copy; 2026 &mdash; Rondonópolis, MT &bull; Feito com café</p>
+        <p class="footer-copy">&copy; 2026 &mdash; Rondonopolis, MT &bull; Feito com cafe</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>
