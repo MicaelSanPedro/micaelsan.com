@@ -4,296 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KARMACORE | Micael San</title>
+    <meta name="description" content="Portfólio de Micael San — Desenvolvedor, criador de ferramentas e projetos cyberpunk.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&amp;family=Roboto+Mono:wght@300;400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --neon-cyan: #00f0ff;
-            --neon-pink: #ff00aa;
-            --neon-purple: #c084fc;
-            --bg: #05050f;
-            --card: rgba(15, 15, 35, 0.82);
-            --border: rgba(0, 240, 255, 0.25);
-            --glow-cyan: 0 0 25px rgba(0, 240, 255, 0.6);
-            --glow-pink: 0 0 25px rgba(255, 0, 170, 0.5);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html, body {
-            height: 100%;
-            background: var(--bg);
-            background: radial-gradient(circle at 20% 30%, #1a0033 0%, #05050f 70%);
-            color: #e0e7ff;
-            font-family: 'Inter', system-ui, sans-serif;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: 
-                linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
-                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.12) 4px, rgba(0,0,0,0.12) 5px);
-            background-size: 100% 5px, 100% 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.4;
-            animation: scanline-move 8s linear infinite;
-        }
-        @keyframes scanline-move { 0% { background-position: 0 0; } 100% { background-position: 0 100px; } }
-
-        .container {
-            max-width: 640px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 24px 16px;
-            position: relative;
-            z-index: 10;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 0 40px;
-        }
-        .title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3.4rem, 13vw, 6rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple), var(--neon-cyan));
-            background-size: 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: var(--glow-cyan), var(--glow-pink);
-            animation: glitch 3s infinite linear alternate, rainbow 8s linear infinite;
-            cursor: pointer;
-        }
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(3px, -3px); }
-            60% { transform: translate(-2px, 2px); }
-        }
-        @keyframes rainbow { 0% { background-position: 0%; } 100% { background-position: 300%; } }
-
-        .subtitle {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 1.1rem;
-            letter-spacing: 4px;
-            opacity: 0.85;
-            margin-top: 8px;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 32px;
-        }
-        #search {
-            width: 100%;
-            padding: 18px 24px 18px 56px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: #fff;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        #search:focus {
-            outline: none;
-            border-color: var(--neon-cyan);
-            box-shadow: var(--glow-cyan);
-            transform: scale(1.02);
-        }
-        .search-icon {
-            position: absolute;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.4rem;
-            color: var(--neon-cyan);
-            opacity: 0.7;
-        }
-
-        .folder {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .folder:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 70px rgba(0, 240, 255, 0.25);
-        }
-        .folder-header {
-            padding: 22px 28px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            user-select: none;
-        }
-        .folder-header span {
-            font-size: 2rem;
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        .folder-header.active span {
-            transform: rotate(180deg);
-            color: var(--neon-pink);
-        }
-
-        .content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.23, 1, 0.32, 1), padding 0.4s ease;
-            padding: 0 28px;
-        }
-        .content.open {
-            max-height: 800px;
-            padding-bottom: 28px;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            width: 100%;
-            padding: 20px 24px;
-            margin: 10px 0;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.35);
-            border-radius: 16px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.05rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transform: translateX(-150%);
-            transition: transform 0.6s;
-        }
-        .download-btn:hover::before {
-            transform: translateX(300%);
-        }
-        .download-btn:hover {
-            background: rgba(0, 240, 255, 0.18);
-            border-color: var(--neon-cyan);
-            transform: translateX(10px);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
-        }
-
-        #no-results {
-            display: none;
-            text-align: center;
-            padding: 60px 20px;
-            opacity: 0.7;
-            font-size: 1.1rem;
-        }
-
-        #modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(3, 3, 12, 0.95);
-            backdrop-filter: blur(20px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-        }
-        .modal-content {
-            background: rgba(15, 15, 35, 0.95);
-            border: 2px solid var(--neon-cyan);
-            border-radius: 24px;
-            padding: 40px 32px;
-            max-width: 380px;
-            width: 92%;
-            text-align: center;
-            box-shadow: var(--glow-cyan), 0 0 80px rgba(255, 0, 170, 0.3);
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .modal-content.show { transform: scale(1); }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 32px;
-            color: #aaa;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .modal-close:hover {
-            color: var(--neon-pink);
-            transform: scale(1.3);
-        }
-
-        .pix-box {
-            background: #000;
-            padding: 18px 24px;
-            border-radius: 16px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 24px 0;
-            border: 1px dashed var(--neon-cyan);
-        }
-
-        .coffee {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 82px;
-            height: 82px;
-            background: rgba(255,255,255,0.06);
-            border: 2px solid rgba(0,240,255,0.3);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 2.8rem;
-            box-shadow: var(--glow-cyan);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            z-index: 1000;
-        }
-        .coffee:hover {
-            transform: scale(1.2) rotate(12deg);
-            box-shadow: 0 0 70px #ff00aa;
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 0 40px;
-            opacity: 0.6;
-            font-size: 0.85rem;
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 20px 12px; }
-            .folder-header { padding: 18px 20px; font-size: 1.25rem; }
-            .download-btn { padding: 16px 20px; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -301,75 +16,255 @@
 
     <div class="container">
 
+        <!-- ══════════ HEADER ══════════ -->
         <header>
             <h1 class="title" onclick="triggerGlitch(this)">KARMACORE</h1>
-            <p class="subtitle">Micael San • 2026</p>
+            <p class="subtitle">Micael San &bull; 2026</p>
+            <nav class="nav-dots">
+                <a href="#about" class="nav-dot">// about</a>
+                <a href="#downloads" class="nav-dot">// downloads</a>
+                <a href="#projects" class="nav-dot">// projetos</a>
+                <a href="#skills" class="nav-dot">// skills</a>
+                <a href="#contact" class="nav-dot">// contato</a>
+            </nav>
         </header>
 
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search" placeholder="Procurar ferramentas ou apps..." autocomplete="off">
-        </div>
-
-        <div class="folder" id="main-folder">
-            <div class="folder-header" onclick="toggleFolder(this)">
-                CENTRAL DE DOWNLOADS
-                <span>+</span>
+        <!-- ══════════ ABOUT ══════════ -->
+        <section id="about" class="section">
+            <div class="section-label">// 01 &mdash; sobre mim</div>
+            <div class="about-card">
+                <img src="https://avatars.githubusercontent.com/u/167715159?v=4" alt="Micael San" class="about-avatar">
+                <div class="about-name">Micael San</div>
+                <div class="about-role">DEVELOPER &bull; CREATOR</div>
+                <p class="about-bio">
+                    Desenvolvedor apaixonado por criar soluções inovadoras e interfaces que fogem do comum.
+                    Foco em projetos que unem estética cyberpunk com funcionalidade real.
+                    Sempre explorando novas tecnologias e quebrando limites.
+                </p>
             </div>
-            <div class="content" id="main-content">
+        </section>
 
-                <!-- WINDOWS -->
-                <div class="folder">
-                    <div class="folder-header" onclick="toggleFolder(this)">
-                        🪟 WINDOWS
-                        <span>+</span>
+        <!-- ══════════ DOWNLOADS ══════════ -->
+        <section id="downloads" class="section">
+            <div class="section-label">// 02 &mdash; central de downloads</div>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search" placeholder="Procurar ferramentas ou apps..." autocomplete="off">
+            </div>
+
+            <div class="folder" id="main-folder">
+                <div class="folder-header" onclick="toggleFolder(this)">
+                    CENTRAL DE DOWNLOADS
+                    <span>+</span>
+                </div>
+                <div class="content" id="main-content">
+
+                    <!-- WINDOWS -->
+                    <div class="folder">
+                        <div class="folder-header" onclick="toggleFolder(this)">
+                            🪟 WINDOWS
+                            <span>+</span>
+                        </div>
+                        <div class="content">
+                            <a href="#" class="download-btn">
+                                <span style="font-size:1.6rem;">📥</span>
+                                <div>
+                                    <strong>Karmacore_Setup.exe</strong><br>
+                                    <span style="font-size:0.85rem; opacity:0.7;">v2.4.1 &bull; 48.2 MB &bull; SHA256 verificado</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="content">
-                        <a href="#" class="download-btn">
-                            <span style="font-size:1.6rem;">📥</span>
-                            <div>
-                                <strong>Karmacore_Setup.exe</strong><br>
-                                <span style="font-size:0.85rem; opacity:0.7;">v2.4.1 • 48.2 MB • SHA256 verificado</span>
-                            </div>
+
+                    <!-- ANDROID -->
+                    <div class="folder">
+                        <div class="folder-header" onclick="toggleFolder(this)">
+                            🤖 ANDROID
+                            <span>+</span>
+                        </div>
+                        <div class="content">
+                            <a href="#" class="download-btn">
+                                <span style="font-size:1.6rem;">📥</span>
+                                <div>
+                                    <strong>Karmacore.apk</strong><br>
+                                    <span style="font-size:0.85rem; opacity:0.7;">v2.4.1 &bull; 31.8 MB &bull; Assinado</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- NO RESULTS -->
+                    <div id="no-results">
+                        Nenhum resultado encontrado para "<span id="search-term"></span>"
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ PROJECTS ══════════ -->
+        <section id="projects" class="section">
+            <div class="section-label">// 03 &mdash; projetos</div>
+
+            <!-- Project 1 -->
+            <div class="project-card" style="margin-bottom: 20px;">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop" alt="Mundo Aprender" class="project-img">
+                <div class="project-body">
+                    <div class="project-title">Mundo Aprender</div>
+                    <p class="project-desc">
+                        Plataforma de e-commerce para materiais educacionais em PDF do 1º ao 6º ano.
+                        Sistema completo com carrinho, checkout via PIX, ativação por key e painel administrativo.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Next.js</span>
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">Tailwind CSS</span>
+                        <span class="project-tag">Prisma</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/MicaelSanPedro/mundo-aprender" target="_blank" class="project-link project-link--secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            Código
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- ANDROID -->
-                <div class="folder">
-                    <div class="folder-header" onclick="toggleFolder(this)">
-                        🤖 ANDROID
-                        <span>+</span>
+            <!-- Project 2 -->
+            <div class="project-card" style="margin-bottom: 20px;">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=300&fit=crop" alt="Karmacore" class="project-img">
+                <div class="project-body">
+                    <div class="project-title">Karmacore</div>
+                    <p class="project-desc">
+                        Suite de ferramentas e utilitários de sistema. Aplicativo multiplataforma para Windows e Android
+                        com foco em performance e segurança.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Desktop</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">C++</span>
+                        <span class="project-tag">Kotlin</span>
                     </div>
-                    <div class="content">
-                        <a href="#" class="download-btn">
-                            <span style="font-size:1.6rem;">📥</span>
-                            <div>
-                                <strong>Karmacore.apk</strong><br>
-                                <span style="font-size:0.85rem; opacity:0.7;">v2.4.1 • 31.8 MB • Assinado</span>
-                            </div>
+                    <div class="project-links">
+                        <a href="#downloads" class="project-link project-link--primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
                         </a>
                     </div>
                 </div>
-
-                <!-- MENSAGEM DE NENHUM RESULTADO -->
-                <div id="no-results">
-                    Nenhum resultado encontrado para "<span id="search-term"></span>"
-                </div>
-
             </div>
-        </div>
+        </section>
+
+        <!-- ══════════ SKILLS ══════════ -->
+        <section id="skills" class="section">
+            <div class="section-label">// 04 &mdash; habilidades</div>
+            <div class="skills-grid">
+                <div class="skill-tag">
+                    <span class="skill-icon">⚡</span>
+                    JavaScript
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">📘</span>
+                    TypeScript
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">⚛️</span>
+                    React
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">▲</span>
+                    Next.js
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🐍</span>
+                    Python
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🎨</span>
+                    CSS / Tailwind
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🗄️</span>
+                    SQL / Prisma
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🤖</span>
+                    Kotlin
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🔧</span>
+                    C++
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🐙</span>
+                    Git
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🐧</span>
+                    Linux
+                </div>
+                <div class="skill-tag">
+                    <span class="skill-icon">🚀</span>
+                    APIs
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ CONTACT ══════════ -->
+        <section id="contact" class="section">
+            <div class="section-label">// 05 &mdash; contato</div>
+            <div class="contact-card">
+                <h3>Vamos conversar?</h3>
+                <p>Disponível para projetos, parcerias e ideias malucas.</p>
+                <div class="contact-links">
+                    <a href="https://github.com/MicaelSanPedro" target="_blank" class="contact-link">
+                        <span class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </span>
+                        <div>
+                            <span class="contact-label">GitHub</span>
+                            <span class="contact-sublabel">@MicaelSanPedro</span>
+                        </div>
+                    </a>
+                    <a href="mailto:sanpedromicael@gmail.com" class="contact-link">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <span class="contact-sublabel">sanpedromicael@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/5566984447849" target="_blank" class="contact-link">
+                        <span class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </span>
+                        <div>
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-sublabel">(66) 98444-7849</span>
+                        </div>
+                    </a>
+                    <a href="https://micaelsan.com" target="_blank" class="contact-link">
+                        <span class="contact-icon">🌐</span>
+                        <div>
+                            <span class="contact-label">Website</span>
+                            <span class="contact-sublabel">micaelsan.com</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
     </div>
 
+    <!-- Coffee support button -->
     <div class="coffee" onclick="openModal()">☕</div>
 
+    <!-- Support modal -->
     <div id="modal" onclick="if(event.target.id==='modal') closeModal()">
         <div class="modal-content" onclick="event.stopImmediatePropagation()">
             <span class="modal-close" onclick="closeModal()">✕</span>
             <h2 style="font-family:Orbitron; font-size:2.3rem; margin-bottom:12px;">APOIE O PROJETO</h2>
             <p style="opacity:0.8; margin-bottom:20px;">Qualquer valor faz diferença 🔥</p>
-            
+
             <div class="pix-box">
                 <span id="pix-key">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</span>
                 <button onclick="copyPix()" id="copy-btn"
@@ -377,139 +272,23 @@
                     📋
                 </button>
             </div>
-            
+
             <p onclick="copyPix()" style="cursor:pointer; opacity:0.7; font-size:0.9rem;">
                 Toque para copiar a chave PIX
             </p>
         </div>
     </div>
 
-    <footer>© 2026 — Rondonópolis, MT • Feito com neon e café</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/MicaelSanPedro" target="_blank" class="footer-link">GitHub</a>
+            <a href="mailto:sanpedromicael@gmail.com" class="footer-link">Email</a>
+            <a href="https://wa.me/5566984447849" target="_blank" class="footer-link">WhatsApp</a>
+        </div>
+        &copy; 2026 &mdash; Rondonópolis, MT &bull; Feito com neon e café
+    </footer>
 
-    <script>
-        // MATRIX RAIN
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const chars = "01アイウエオカキクケコ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const fontSize = 14;
-        const columns = width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(5,5,15,0.08)';
-            ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = '#00f0ff';
-            ctx.font = `${fontSize}px monospace`;
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 45);
-
-        // FUNÇÃO DE BUSCA PERFEITA
-        function filterSearch() {
-            const term = document.getElementById('search').value.toLowerCase().trim();
-            const subFolders = document.querySelectorAll('#main-content > .folder');
-            let hasResults = false;
-
-            subFolders.forEach(folder => {
-                const folderText = folder.textContent.toLowerCase();
-                if (term === '' || folderText.includes(term)) {
-                    folder.style.display = '';
-                    hasResults = true;
-                } else {
-                    folder.style.display = 'none';
-                }
-            });
-
-            const noResults = document.getElementById('no-results');
-            const searchTermSpan = document.getElementById('search-term');
-
-            if (term !== '' && !hasResults) {
-                noResults.style.display = 'block';
-                searchTermSpan.textContent = term;
-            } else {
-                noResults.style.display = 'none';
-            }
-        }
-
-        // EVENTO DE BUSCA (agora 100% funcional)
-        document.getElementById('search').addEventListener('input', filterSearch);
-
-        // TOGGLE DE PASTAS
-        function toggleFolder(header) {
-            const content = header.nextElementSibling;
-            header.classList.toggle('active');
-            content.classList.toggle('open');
-            header.querySelector('span').textContent = content.classList.contains('open') ? '−' : '+';
-        }
-
-        // GLITCH NO TÍTULO
-        function triggerGlitch(el) {
-            el.style.animation = 'none';
-            setTimeout(() => el.style.animation = 'glitch 0.8s infinite linear alternate', 10);
-        }
-
-        // PIX COPY
-        function copyPix() {
-            const key = "1ad6a146-8d7e-4521-a96a-fde7ccd602ac";
-            const btn = document.getElementById('copy-btn');
-            
-            navigator.clipboard.writeText(key).then(() => {
-                const original = btn.innerHTML;
-                btn.innerHTML = '✅';
-                btn.style.color = '#00ff88';
-                setTimeout(() => { btn.innerHTML = original; btn.style.color = ''; }, 1800);
-                alert("✅ Chave PIX copiada com sucesso!");
-            }).catch(() => {
-                const ta = document.createElement('textarea');
-                ta.value = key; ta.style.position = 'fixed'; ta.style.opacity = '0';
-                document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-                alert("✅ Chave PIX copiada!");
-            });
-        }
-
-        // MODAL
-        function openModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.querySelector('.modal-content').classList.add('show'), 10);
-        }
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.querySelector('.modal-content').classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 350);
-        }
-
-        // ESC FECHA MODAL
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                const modal = document.getElementById('modal');
-                if (modal.style.display === 'flex') closeModal();
-            }
-        });
-
-        // ABRE A PASTA PRINCIPAL AUTOMATICAMENTE
-        window.onload = () => {
-            const mainHeader = document.querySelector('#main-folder .folder-header');
-            if (mainHeader) {
-                mainHeader.classList.add('active');
-                document.getElementById('main-content').classList.add('open');
-                mainHeader.querySelector('span').textContent = '−';
-            }
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
