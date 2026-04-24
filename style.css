@@ -605,6 +605,114 @@ body::after {
     margin-top: 2px;
 }
 
+/* ═══════════════ DOWNLOAD ACCESS CARD ═══════════════ */
+.dl-access-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    background: rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-glass);
+}
+.dl-access-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    pointer-events: none;
+}
+.dl-access-card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%; right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.04), transparent);
+    transition: left 0.6s ease;
+}
+.dl-access-card:hover::after {
+    left: 100%;
+}
+.dl-access-card:hover {
+    border-color: rgba(0, 240, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 240, 255, 0.1);
+}
+.dl-access-icon {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px;
+    background: rgba(0, 240, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    color: var(--neon-cyan);
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+.dl-access-card:hover .dl-access-icon {
+    background: rgba(0, 240, 255, 0.12);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.05);
+}
+.dl-access-info {
+    flex: 1;
+}
+.dl-access-info strong {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 3px;
+}
+.dl-access-info span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+}
+.dl-access-arrow {
+    font-size: 1.4rem;
+    color: var(--neon-cyan);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+.dl-access-card:hover .dl-access-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Light mode: download access card */
+html.light .dl-access-card {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+html.light .dl-access-card:hover {
+    border-color: rgba(8, 145, 178, 0.15);
+}
+html.light .dl-access-card::before {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+}
+html.light .dl-access-icon {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.15);
+}
+html.light .dl-access-card:hover .dl-access-icon {
+    background: rgba(8, 145, 178, 0.14);
+}
+
 /* ═══════════════ FOLDER / ACCORDION ═══════════════ */
 .folder {
     background: rgba(255, 255, 255, 0.02);

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads | KARMACORE</title>
+    <meta name="description" content="Central de downloads do Karmacore — ferramentas e utilitários para Windows e Android.">
+    <meta property="og:title" content="Downloads | KARMACORE">
+    <meta property="og:description" content="Central de downloads — ferramentas e utilitários para Windows e Android.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://micaelsan.com/downloads.html">
+    <meta name="theme-color" content="#05050f">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dl-hero {
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+        .dl-hero-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.4));
+        }
+        .dl-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            margin-bottom: 6px;
+        }
+        .dl-hero p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+        .dl-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .dl-stat {
+            text-align: center;
+            padding: 14px 24px;
+            background: var(--glass);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            min-width: 110px;
+            box-shadow: var(--shadow-glass);
+            position: relative;
+            overflow: hidden;
+        }
+        .dl-stat::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            pointer-events: none;
+        }
+        .dl-stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+        .dl-stat-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+        }
+        .back-link:hover {
+            color: var(--neon-cyan);
+            border-color: rgba(0, 240, 255, 0.15);
+            background: rgba(0, 240, 255, 0.04);
+            transform: translateX(-4px);
+        }
+        @media (max-width: 480px) {
+            .dl-stats { gap: 12px; }
+            .dl-stat { min-width: 90px; padding: 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix" style="position:fixed;inset:0;z-index:0;opacity:0.06;pointer-events:none;"></canvas>
+
+    <!-- Liquid Glass Orbs -->
+    <div class="liquid-orb"></div>
+    <div class="liquid-orb"></div>
+    <div class="liquid-orb"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">⚡</span>
+                <span class="nav-logo-text">KARMACORE</span>
+            </a>
+
+            <div class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#downloads" class="nav-link active">Downloads</a>
+                <a href="index.html#projects" class="nav-link">Projetos</a>
+                <a href="index.html#contact" class="nav-link">Contato</a>
+            </div>
+
+            <div class="nav-right">
+                <button class="theme-toggle" id="theme-toggle" title="Alternar tema" onclick="toggleTheme()">
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+                <button class="nav-burger" id="burger" onclick="toggleBurger()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html" class="mm-link" onclick="closeBurger()">Home</a>
+        <a href="#downloads" class="mm-link" onclick="closeBurger()">Downloads</a>
+        <a href="index.html#projects" class="mm-link" onclick="closeBurger()">Projetos</a>
+        <a href="index.html#contact" class="mm-link" onclick="closeBurger()">Contato</a>
+    </div>
+
+    <div class="container">
+
+        <a href="index.html" class="back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Voltar ao portfólio
+        </a>
+
+        <!-- DOWNLOAD HERO -->
+        <header class="dl-hero">
+            <span class="dl-hero-icon">📥</span>
+            <h1>CENTRAL DE DOWNLOADS</h1>
+            <p>Ferramentas &bull; Utilitários &bull; Multiplataforma</p>
+            <div class="dl-stats">
+                <div class="dl-stat">
+                    <div class="dl-stat-value">2</div>
+                    <div class="dl-stat-label">PLATAFORMAS</div>
+                </div>
+                <div class="dl-stat">
+                    <div class="dl-stat-value">v2.4.1</div>
+                    <div class="dl-stat-label">VERSÃO ATUAL</div>
+                </div>
+                <div class="dl-stat">
+                    <div class="dl-stat-value">✓</div>
+                    <div class="dl-stat-label">ASSINADO</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="divider"></div>
+
+        <!-- DOWNLOADS CONTENT -->
+        <section id="downloads" class="section">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search" placeholder="Procurar ferramentas ou apps..." autocomplete="off">
+            </div>
+
+            <div class="folder" id="main-folder">
+                <div class="folder-header" onclick="toggleFolder(this)">
+                    CENTRAL DE DOWNLOADS
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="content" id="main-content">
+
+                    <div class="folder">
+                        <div class="folder-header" onclick="toggleFolder(this)">
+                            🪟 WINDOWS
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)" class="download-btn" onclick="return false">
+                                <span class="dl-icon">📥</span>
+                                <div>
+                                    <strong>Karmacore_Setup.exe</strong>
+                                    <div class="dl-info">v2.4.1 &bull; 48.2 MB &bull; SHA256 verificado</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="folder">
+                        <div class="folder-header" onclick="toggleFolder(this)">
+                            🤖 ANDROID
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)" class="download-btn" onclick="return false">
+                                <span class="dl-icon">📥</span>
+                                <div>
+                                    <strong>Karmacore.apk</strong>
+                                    <div class="dl-info">v2.4.1 &bull; 31.8 MB &bull; Assinado</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="no-results">
+                        Nenhum resultado encontrado para "<span id="search-term"></span>"
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Coffee button -->
+    <div class="coffee" onclick="openModal()">☕</div>
+
+    <!-- Support modal -->
+    <div id="modal" onclick="if(event.target===this) closeModal()">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">✕</span>
+            <div class="modal-title">APOIE O PROJETO</div>
+            <p class="modal-subtitle">Qualquer valor faz diferença 🔥</p>
+            <div class="pix-box">
+                <span id="pix-key" data-pix="1ad6a146-8d7e-4521-a96a-fde7ccd602ac">1ad6a146-8d7e-4521-a96a-fde7ccd602ac</span>
+                <button id="copy-btn" onclick="copyPix()" title="Copiar chave PIX">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="copy-icon">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" id="check-icon" style="display:none">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <p class="pix-hint" onclick="copyPix()">Toque na chave ou no botão para copiar</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/MicaelSanPedro" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+            <a href="mailto:sanpedromicael@gmail.com" class="footer-link">Email</a>
+            <a href="https://wa.me/5566984447849" target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 &mdash; Rondonópolis, MT &bull; Feito com neon e café</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

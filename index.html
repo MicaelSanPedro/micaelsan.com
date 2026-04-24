@@ -105,58 +105,17 @@
 
         <!-- DOWNLOADS -->
         <section id="downloads" class="section">
-            <div class="section-label">// 02 &mdash; central de downloads</div>
-
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search" placeholder="Procurar ferramentas ou apps..." autocomplete="off">
-            </div>
-
-            <div class="folder" id="main-folder">
-                <div class="folder-header" onclick="toggleFolder(this)">
-                    CENTRAL DE DOWNLOADS
-                    <span class="toggle-icon">+</span>
+            <div class="section-label">// 02 &mdash; downloads</div>
+            <a href="downloads.html" class="dl-access-card">
+                <div class="dl-access-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 </div>
-                <div class="content" id="main-content">
-
-                    <div class="folder">
-                        <div class="folder-header" onclick="toggleFolder(this)">
-                            🪟 WINDOWS
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="download-btn" onclick="return false">
-                                <span class="dl-icon">📥</span>
-                                <div>
-                                    <strong>Karmacore_Setup.exe</strong>
-                                    <div class="dl-info">v2.4.1 &bull; 48.2 MB &bull; SHA256 verificado</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="folder">
-                        <div class="folder-header" onclick="toggleFolder(this)">
-                            🤖 ANDROID
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="download-btn" onclick="return false">
-                                <span class="dl-icon">📥</span>
-                                <div>
-                                    <strong>Karmacore.apk</strong>
-                                    <div class="dl-info">v2.4.1 &bull; 31.8 MB &bull; Assinado</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div id="no-results">
-                        Nenhum resultado encontrado para "<span id="search-term"></span>"
-                    </div>
-
+                <div class="dl-access-info">
+                    <strong>Central de Downloads</strong>
+                    <span>Ferramentas para Windows &bull; Android &bull; v2.4.1</span>
                 </div>
-            </div>
+                <span class="dl-access-arrow">→</span>
+            </a>
         </section>
 
         <div class="divider"></div>
@@ -183,7 +142,7 @@
                             <span class="project-tag">Kotlin</span>
                         </div>
                         <div class="project-links">
-                            <a href="#downloads" class="project-link project-link--primary">
+                            <a href="downloads.html" class="project-link project-link--primary">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Download
                             </a>

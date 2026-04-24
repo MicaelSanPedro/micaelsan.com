@@ -2,5 +2,6 @@
 *
 !.gitignore
 !index.html
+!downloads.html
 !style.css
 !script.js
